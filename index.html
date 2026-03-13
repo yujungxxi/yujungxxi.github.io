@@ -3,25 +3,87 @@
 
 <head>
 <title>Una Photo Journal</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+background:#f7f7f7;
+}
+
+nav{
+position:fixed;
+top:30px;
+right:40px;
+font-size:18px;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:black;
+}
+
+.logo{
+position:fixed;
+top:30px;
+left:40px;
+font-size:26px;
+font-weight:600;
+}
+
+.gallery{
+position:relative;
+height:100vh;
+}
+
+.gallery img{
+position:absolute;
+width:220px;
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.08);
+}
+
+.img1{top:120px; left:180px;}
+.img2{top:180px; left:420px;}
+.img3{top:350px; left:120px;}
+.img4{top:500px; left:420px;}
+.img5{top:320px; right:200px;}
+.img6{top:520px; right:120px;}
+.img7{top:150px; right:300px;}
+
+</style>
+
 </head>
 
 <body>
 
-<h1>Una Photo Journal</h1>
+<div class="logo">YJ</div>
 
-<p>Hello! This is my photography website.</p>
-<p>
-<a href="about.html">About</a> |
-<a href="painting.html">Painting</a> |
-<a href="photos.html">Photos</a> |
-<a href="views.html">Views</a> |
-<a href="travel.html">Travel</a> |
+<nav>
+<a href="about.html">About</a>
+<a href="painting.html">Painting</a>
+<a href="photos.html">Photos</a>
+<a href="views.html">Views</a>
+<a href="travel.html">Travel</a>
 <a href="friends.html">Friends</a>
-</p>
+</nav>
 
-<p>Welcome to my photography and art journal.</p>
-<p>Still working on it...</p>
+<div class="gallery">
+
+<img src="images/photo1.jpg" class="img1">
+<img src="images/photo2.jpg" class="img2">
+<img src="images/photo3.jpg" class="img3">
+<img src="images/photo4.jpg" class="img4">
+<img src="images/photo5.jpg" class="img5">
+<img src="images/photo6.jpg" class="img6">
+<img src="images/photo7.jpg" class="img7">
+
+</div>
 
 </body>
-
 </html>
