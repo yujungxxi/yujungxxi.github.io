@@ -9,82 +9,12 @@
 body{
 margin:0;
 font-family:Helvetica, Arial, sans-serif;
-background:#b9dcff;   /* baby blue */
-color:#0d2a4a;
+background:#eaf3ff;
+color:#0b2545;
 }
 
-.container{
-display:flex;
-min-height:100vh;
-}
+/* 上方選單 */
 
-.left{
-width:50%;
-padding:100px 90px;
-}
-
-.right{
-width:50%;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-}
-
-.right img{
-width:70%;
-max-width:450px;
-margin-bottom:30px;
-}
-
-.bigtitle{
-position:absolute;
-top:140px;
-left:80px;
-font-size:130px;
-font-family:Georgia, serif;
-opacity:0.25;
-letter-spacing:8px;
-}
-
-.email{
-font-style:italic;
-margin-bottom:40px;
-font-size:18px;
-}
-
-.bio{
-font-size:19px;
-line-height:1.8;   /* 這個讓文字不擠 */
-max-width:420px;
-}
-
-.bio p{
-margin-bottom:30px;   /* 段落距離 */
-}
-
-.name{
-font-size:28px;
-letter-spacing:2px;
-margin-top:40px;
-}
-
-.role{
-font-style:italic;
-margin-top:10px;
-}
-  
-.country{
-font-style:italic;
-margin-top:10px;
-}
-  
-.portfolio{
-font-size:50px;
-letter-spacing:5px;
-color:#0b2f66;   /* 深藍色 */
-}
-  
 nav{
 position:fixed;
 top:30px;
@@ -96,9 +26,83 @@ z-index:1000;
 nav a{
 margin-left:25px;
 text-decoration:none;
-color:#0b2f66;
+color:#0b2545;
 }
-  
+
+/* 主畫面 */
+
+.container{
+display:grid;
+grid-template-columns: 1fr 1fr;
+align-items:center;
+min-height:100vh;
+padding:120px 8vw;
+gap:6vw;
+}
+
+/* 左邊文字 */
+
+.left{
+max-width:420px;
+}
+
+.email{
+font-style:italic;
+margin-bottom:40px;
+font-size:18px;
+}
+
+.bio{
+font-size:18px;
+line-height:1.8;
+}
+
+.bio p{
+margin-bottom:28px;
+}
+
+.country{
+margin-top:10px;
+}
+
+/* 右邊 */
+
+.right{
+text-align:center;
+}
+
+.right img{
+width:100%;
+max-width:420px;
+margin-bottom:30px;
+}
+
+/* 名字 */
+
+.name{
+font-size:28px;
+letter-spacing:2px;
+margin-top:10px;
+}
+
+.role{
+font-style:italic;
+margin-top:6px;
+}
+
+/* 大字背景 */
+
+.bigtitle{
+position:fixed;
+left:6vw;
+top:160px;
+font-size:12vw;
+font-family:Georgia, serif;
+opacity:0.12;
+letter-spacing:6px;
+pointer-events:none;
+}
+
 </style>
 
 </head>
