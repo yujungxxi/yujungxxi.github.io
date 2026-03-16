@@ -53,13 +53,23 @@ display:grid;
 grid-template-columns: 1fr 1fr;
 align-items:center;
 width:90vw;
+max-width:1200px;
 aspect-ratio:16/9;
 margin:auto;
-margin-top:120px;
+margin-top:140px;
 padding:0 6vw;
 gap:6vw;
 }
 
+@media (max-aspect-ratio: 3/4){
+
+.container{
+width:95vw;
+aspect-ratio:16/9;
+}
+
+}
+  
 /* 左邊文字 */
 
 .left{
@@ -95,9 +105,9 @@ align-items:center;
 }
 
 .right img{
-width:100%;
-max-width:420px;
-margin-bottom:12px;
+width:70%;
+max-width:450px;
+margin-bottom:10px;
 }
 
 /* 名字 */
