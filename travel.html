@@ -26,6 +26,14 @@ justify-content:space-between;
 align-items:center;
 z-index:1000;
 transition:0.4s;
+
+transition:opacity 0.4s ease, transform 0.4s ease;
+}
+
+header.hide{
+opacity:0;
+transform:translateY(-40px); /* 往上滑走 */
+pointer-events:none;
 }
 
 header.hide{
