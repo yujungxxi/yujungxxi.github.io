@@ -3,17 +3,258 @@
 
 <head>
 <title>Travel</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+background:black;
+color:white;
+overflow-x:hidden;
+}
+
+/* ===== NAV ===== */
+
+header{
+position:fixed;
+top:30px;
+left:40px;
+right:40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+z-index:1000;
+transition:0.4s;
+}
+
+header.hide{
+transform:translateY(-120%);
+}
+
+.logo a{
+color:white;
+font-size:28px;
+text-decoration:none;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+font-size:16px;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+height:85vh;
+background:url("images/travel/cover.jpg") center/cover no-repeat;
+
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+.hero h1{
+font-size:70px;
+font-family:Georgia, serif;
+font-weight:400;
+}
+
+/* ===== SECTION ===== */
+
+.section{
+padding:100px 8vw;
+}
+
+/* 左圖右文字 */
+
+.block{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:120px;
+gap:60px;
+}
+
+.block img{
+width:45%;
+aspect-ratio:3/4;
+object-fit:cover;
+}
+
+.text{
+width:45%;
+}
+
+.text h2{
+font-size:40px;
+font-family:Georgia, serif;
+margin-bottom:20px;
+}
+
+.text p{
+line-height:1.8;
+opacity:0.8;
+}
+
+/* ===== COUNTRY GRID ===== */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:40px;
+}
+
+.card{
+position:relative;
+aspect-ratio:1/1;
+overflow:hidden;
+cursor:pointer;
+}
+
+.card img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:0.5s;
+}
+
+.card:hover img{
+transform:scale(1.1);
+}
+
+.card-title{
+position:absolute;
+bottom:20px;
+left:20px;
+font-size:20px;
+}
+
+/* 手機也維持比例（只是縮小） */
+
+@media (max-width:900px){
+
+.hero h1{
+font-size:42px;
+}
+
+.block{
+flex-direction:column;
+}
+
+.block img,
+.text{
+width:100%;
+}
+
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-<h1>Travel</h1>
+<header id="navbar">
 
-<p><a href="index.html">Home</a></p>
+<div class="logo">
+<a href="index.html">Una</a>
+</div>
 
-<img src="images/travel/travel1.jpg" width="400">
-<img src="images/travel/travel2.JPG" width="400">
+<nav>
+<a href="painting.html">Painting</a>
+<a href="photos.html">Photos</a>
+<a href="views.html">Views</a>
+<a href="travel.html">Travel</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+<h1>Travel & Stories</h1>
+</div>
+
+<!-- INTRO -->
+
+<div class="section">
+
+<div class="block">
+
+<img src="images/travel/intro.jpg">
+
+<div class="text">
+<h2>A few moments</h2>
+<p>
+Travel, to me, is not just about places — it's about light, air, and quiet
+moments that stay longer than the trip itself.
+</p>
+
+<p>
+From cities to coastlines, every place carries a feeling I want to remember.
+</p>
+</div>
+
+</div>
+
+</div>
+
+<!-- COUNTRY GRID -->
+
+<div class="section">
+
+<div class="grid">
+
+<a href="netherlands.html" class="card">
+<img src="images/travel/netherlands.jpg">
+<div class="card-title">The Netherlands</div>
+</a>
+
+<a href="usa.html" class="card">
+<img src="images/travel/usa.jpg">
+<div class="card-title">United States</div>
+</a>
+
+<a href="seattle.html" class="card">
+<img src="images/travel/seattle.jpg">
+<div class="card-title">Seattle</div>
+</a>
+
+</div>
+
+</div>
+
+<!-- NAV 隱藏 JS -->
+
+<script>
+
+let lastScroll = 0;
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+let currentScroll = window.pageYOffset;
+
+if(currentScroll > lastScroll){
+navbar.classList.add("hide");
+}else{
+navbar.classList.remove("hide");
+}
+
+lastScroll = currentScroll;
+
+});
+
+</script>
 
 </body>
-
 </html>
