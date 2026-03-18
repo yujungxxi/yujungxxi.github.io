@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Czech Republic</title>
+
+<style>
+
+/* ===== 基本 ===== */
+
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+background:black;
+color:white;
+}
+
+/* ===== NAV ===== */
+
+header{
+position:fixed;
+top:30px;
+left:40px;
+right:40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+z-index:1000;
+
+opacity:0;
+transition:0.5s;
+pointer-events:none;
+}
+
+header.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.logo a{
+font-size:28px;
+font-weight:600px;
+text-decoration:none;
+color:white;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+}
+
+/* ===== HERO（沉浸滿版） ===== */
+
+.hero{
+height:100vh;
+position:relative;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.8);
+}
+
+.hero-text{
+position:absolute;
+bottom:80px;
+left:60px;
+}
+
+.hero-text h1{
+font-size:60px;
+font-family:Georgia, serif;
+margin-bottom:20px;
+}
+
+.hero-text p{
+max-width:400px;
+line-height:1.8;
+opacity:0.8;
+}
+
+/* ===== CITY 共用 ===== */
+
+.city{
+width:90vw;
+max-width:1100px;
+margin:160px auto;
+}
+
+/* 標題 */
+
+.city h2{
+font-size:40px;
+font-family:Georgia, serif;
+margin-bottom:40px;
+}
+
+/* ===== Prague（不對稱） ===== */
+
+.prague{
+display:grid;
+grid-template-columns:1.5fr 1fr;
+gap:30px;
+align-items:start;
+}
+
+.prague img{
+width:100%;
+object-fit:cover;
+}
+
+.tall{ aspect-ratio:3/4; }
+.square{ aspect-ratio:1/1; }
+
+.text{
+margin-top:20px;
+max-width:400px;
+line-height:1.8;
+opacity:0.85;
+}
+
+/* ===== Cesky（堆疊感） ===== */
+
+.cesky{
+display:grid;
+grid-template-columns:1fr;
+gap:30px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.cesky img{
+width:100%;
+object-fit:cover;
+}
+
+.wide{ aspect-ratio:4/3; }
+
+/* ===== Back ===== */
+
+.back{
+width:90vw;
+max-width:1100px;
+margin:120px auto;
+}
+
+.back a{
+text-decoration:none;
+color:white;
+font-size:18px;
+}
+
+/* ===== 手機 ===== */
+
+@media (max-width:900px){
+
+.hero-text{
+left:30px;
+right:30px;
+}
+
+.hero-text h1{
+font-size:38px;
+}
+
+.prague{
+grid-template-columns:1fr;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<header id="navbar" class="show">
+
+<div class="logo">
+<a href="index.html">Una</a>
+</div>
+
+<nav>
+<a href="travel.html">Travel</a>
+<a href="belgium.html">Belgium</a>
+<a href="austria.html">Austria</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<img src="images/travel/czech1.jpg">
+
+<div class="hero-text">
+<h1>Czech Republic</h1>
+<p>
+A place of quiet shadows, old streets, and stories hidden in every corner.
+</p>
+</div>
+
+</div>
+
+<!-- Prague -->
+
+<div class="city">
+
+<h2>Prague</h2>
+
+<div class="prague">
+
+<img src="images/travel/prague1.jpg" class="tall">
+
+<div>
+
+<img src="images/travel/prague2.jpg" class="square">
+
+<div class="text">
+The city feels like a dream —
+soft light, historic facades, and time standing still.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Cesky Krumlov -->
+
+<div class="city">
+
+<h2>Český Krumlov</h2>
+
+<div class="cesky">
+
+<img src="images/travel/cesky1.jpg" class="wide">
+
+<div class="row">
+<img src="images/travel/cesky2.jpg" class="square">
+<img src="images/travel/cesky3.jpg" class="square">
+</div>
+
+<div class="text">
+A small town that feels untouched —
+warm tones, quiet streets, and a sense of stillness.
+</div>
+
+</div>
+
+</div>
+
+<!-- Back -->
+
+<div class="back">
+<a href="travel.html">← Back to Travel</a>
+</div>
+
+<!-- NAV 動畫 -->
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY < 80){
+navbar.classList.add("show");
+}else{
+navbar.classList.remove("show");
+}
+
+});
+
+</script>
+
+</body>
+</html>
