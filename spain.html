@@ -6,14 +6,16 @@
 
 <style>
 
+/* ===== 基本 ===== */
+
 body{
 margin:0;
 font-family:Helvetica, Arial, sans-serif;
-color:white;
-background:black;
+background:white;
+color:black;
 }
 
-/* ===== NAV ===== */
+/* ===== NAV（只在最上面出現） ===== */
 
 header{
 position:fixed;
@@ -28,93 +30,144 @@ align-items:center;
 z-index:1000;
 
 opacity:0;
-transform:translateY(-20px);
-transition:all 0.6s ease;
+transition:0.5s;
 pointer-events:none;
 }
 
 header.show{
 opacity:1;
-transform:translateY(0);
 pointer-events:auto;
 }
 
 .logo a{
-color:white;
-text-decoration:none;
 font-size:28px;
+text-decoration:none;
+color:black;
 }
 
 nav a{
 margin-left:25px;
 text-decoration:none;
-color:white;
+color:black;
 }
 
-/* ===== SECTION (每一張照片) ===== */
+/* ===== HERO 拼貼 ===== */
 
-.section{
-height:100vh;
-position:relative;
+.hero{
+width:92vw;
+max-width:1200px;
+margin:120px auto;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
 }
 
-/* 背景圖片 */
+.left, .right{
+display:flex;
+flex-direction:column;
+gap:20px;
+}
 
-.section img{
-position:absolute;
+.big{ aspect-ratio:4/5; }
+.small{ aspect-ratio:1/1; }
+
+.hero img{
 width:100%;
 height:100%;
 object-fit:cover;
 }
 
-/* 黑色漸層（讓文字清楚） */
+/* ===== CITY 共用 ===== */
 
-.overlay{
-position:absolute;
-bottom:0;
-left:0;
-width:100%;
-height:40%;
-
-background:linear-gradient(
-to top,
-rgba(0,0,0,0.7),
-rgba(0,0,0,0)
-);
+.city{
+width:92vw;
+max-width:1100px;
+margin:140px auto;
 }
 
-/* 文字 */
+.city h2{
+font-size:38px;
+font-family:Georgia, serif;
+margin-bottom:25px;
+}
 
 .text{
-position:absolute;
-bottom:60px;
-left:60px;
-max-width:500px;
-}
-
-.text h1{
-font-size:50px;
-font-family:Georgia, serif;
-margin-bottom:20px;
-}
-
-.text p{
+margin-top:15px;
+max-width:520px;
 line-height:1.8;
-opacity:0.9;
 }
 
-/* 手機也維持比例 */
+/* ===== 排版 1（大左 小右） ===== */
+
+.layout-a{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:20px;
+}
+
+/* ===== 排版 2（左右交錯） ===== */
+
+.layout-b{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+/* ===== 排版 3（中間大 + 上下小） ===== */
+
+.layout-c{
+display:grid;
+grid-template-columns:1fr;
+gap:20px;
+}
+
+.stack{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px;
+}
+
+/* ===== 圖片比例 ===== */
+
+.tall{ aspect-ratio:3/4; }
+.wide{ aspect-ratio:4/3; }
+.square{ aspect-ratio:1/1; }
+
+.city img{
+width:100%;
+object-fit:cover;
+}
+
+/* ===== 返回按鈕 ===== */
+
+.back{
+width:92vw;
+max-width:1100px;
+margin:100px auto;
+}
+
+.back a{
+text-decoration:none;
+color:black;
+font-size:18px;
+}
+
+/* ===== 手機（保持風格但單欄） ===== */
 
 @media (max-width:900px){
 
-.text{
-left:30px;
-right:30px;
-bottom:40px;
+.hero{
+grid-template-columns:1fr;
 }
 
-.text h1{
-font-size:34px;
+.layout-a,
+.layout-b{
+grid-template-columns:1fr;
+}
+
+.stack{
+grid-template-columns:1fr;
 }
 
 }
@@ -125,75 +178,123 @@ font-size:34px;
 
 <body>
 
-<!-- NAV -->
+<!-- ===== NAV ===== -->
 
 <header id="navbar" class="show">
 
 <div class="logo">
-<a href="travel.html">Una</a>
+<a href="index.html">Una</a>
 </div>
 
 <nav>
 <a href="travel.html">Travel</a>
+<a href="usa.html">United States</a>
+<a href="france.html">France</a>
 </nav>
 
 </header>
 
-<!-- SECTION 1 -->
+<!-- ===== HERO ===== -->
 
-<div class="section">
+<div class="hero">
 
-<img src="images/travel/spain1.jpg">
+<div class="left">
+<img src="images/travel/spain1.jpg" class="big">
+<img src="images/travel/spain2.jpg" class="small">
+</div>
 
-<div class="overlay"></div>
+<div class="right">
+<img src="images/travel/spain3.jpg" class="small">
+<img src="images/travel/spain4.jpg" class="big">
+</div>
+
+</div>
+
+<!-- ===== Barcelona（排版 A） ===== -->
+
+<div class="city">
+
+<h2>Barcelona</h2>
+
+<div class="layout-a">
+<img src="images/travel/barcelona1.jpg" class="tall">
+<img src="images/travel/barcelona2.jpg" class="square">
+</div>
 
 <div class="text">
-<h1>Spain</h1>
-<p>
-Golden light, warm air, and streets that feel like stories.
-Spain was a place where time slowed down, and every corner held a quiet beauty.
-</p>
+Barcelona feels like stepping into a living artwork —
+soft curves, colors, and sunlight everywhere.
 </div>
 
 </div>
 
-<!-- SECTION 2 -->
+<!-- ===== Madrid（排版 B） ===== -->
 
-<div class="section">
+<div class="city">
 
-<img src="images/travel/spain2.jpg">
+<h2>Madrid</h2>
 
-<div class="overlay"></div>
+<div class="layout-b">
+<img src="images/travel/madrid1.jpg" class="wide">
+<img src="images/travel/madrid2.jpg" class="tall">
+</div>
 
 <div class="text">
-<h1>Barcelona</h1>
-<p>
-Colors, textures, and architecture that feels alive.
-Walking through the city felt like stepping into art itself.
-</p>
+A quiet elegance lives in Madrid —
+morning light, open plazas, and slow afternoons.
 </div>
 
 </div>
 
-<!-- SECTION 3 -->
+<!-- ===== Seville（排版 C 雜誌感） ===== -->
 
-<div class="section">
+<div class="city">
 
-<img src="images/travel/spain3.jpg">
+<h2>Seville</h2>
 
-<div class="overlay"></div>
+<div class="layout-c">
+
+<img src="images/travel/seville1.jpg" class="wide">
+
+<div class="stack">
+<img src="images/travel/seville2.jpg" class="square">
+<img src="images/travel/seville3.jpg" class="square">
+</div>
+
+</div>
 
 <div class="text">
-<h1>Moments</h1>
-<p>
-Small cafés, quiet mornings, and golden sunsets —
-the kind of moments that stay long after the trip ends.
-</p>
+Warm air, golden tones, and time that slows down —
+Seville feels like a memory you don’t want to leave.
 </div>
 
 </div>
 
-<!-- NAV 控制 -->
+<!-- ===== Valencia（再一種排版） ===== -->
+
+<div class="city">
+
+<h2>Valencia</h2>
+
+<div class="layout-a">
+<img src="images/travel/valencia1.jpg" class="square">
+<img src="images/travel/valencia2.jpg" class="tall">
+</div>
+
+<div class="text">
+A mix of modern lines and coastal calm —
+Valencia feels fresh, open, and quietly beautiful.
+</div>
+
+</div>
+
+<!-- ===== 回 Travel ===== -->
+
+<div class="back">
+<a href="travel.html">← Back to Travel</a>
+</div>
+
+<!-- ===== NAV 動畫 ===== -->
 
 <script>
 
@@ -201,12 +302,9 @@ const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
 
-let currentScroll = window.pageYOffset;
-
-/* 只有最上面顯示 */
-if (currentScroll < 50) {
+if(window.scrollY < 80){
 navbar.classList.add("show");
-} else {
+}else{
 navbar.classList.remove("show");
 }
 
@@ -215,5 +313,4 @@ navbar.classList.remove("show");
 </script>
 
 </body>
-
 </html>
