@@ -203,7 +203,43 @@ I also enjoy painting and expressing my thoughts and memories through visual sto
 </div>
 
 </div>
+  
+<!-- NAV 隱藏 JS -->
 
+<script>
+
+let lastScroll = 0;
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+let currentScroll = window.pageYOffset;
+
+/* ⭐ 加這條：避免頂部亂跳 */
+if (currentScroll <= 0) {
+navbar.classList.remove("hide");
+return;
+}
+
+/* ⭐ 加 threshold（重點） */
+if (Math.abs(currentScroll - lastScroll) < 10) {
+return;
+}
+
+/* 往下滑 → 隱藏 */
+if (currentScroll > lastScroll && currentScroll > 100) {
+navbar.classList.add("hide");
+}
+
+/* 往上滑 → 顯示 */
+else if (currentScroll < lastScroll) {
+navbar.classList.remove("hide");
+}
+
+lastScroll = currentScroll;
+});
+
+</script>
+  
 </body>
 
 </html>
