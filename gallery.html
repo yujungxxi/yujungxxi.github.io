@@ -229,23 +229,22 @@ grid-template-columns:repeat(3,1fr);
 
 </header>
   
-<!-- NAV 隱藏 JS -->
-
 <script>
 
 let lastScroll = 0;
 const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
+
 let currentScroll = window.pageYOffset;
 
-/* ⭐ 加這條：避免頂部亂跳 */
+/* 在最上面 → 一定顯示 */
 if (currentScroll <= 0) {
 navbar.classList.remove("hide");
 return;
 }
 
-/* ⭐ 加 threshold（重點） */
+/* ⭐ 避免微小抖動 */
 if (Math.abs(currentScroll - lastScroll) < 10) {
 return;
 }
@@ -261,6 +260,7 @@ navbar.classList.remove("hide");
 }
 
 lastScroll = currentScroll;
+
 });
 
 </script>
