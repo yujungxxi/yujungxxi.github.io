@@ -25,8 +25,17 @@ align-items:center;
 z-index:1000;
 
 /* ⭐ 關鍵動畫 */
-transition:opacity 0.4s ease, transform 0.4s ease;
+opacity:0;
+transform:translateY(-20px);
 transition:all 0.6s cubic-bezier(0.4,0,0.2,1);
+pointer-events:none;
+}
+
+/* ⭐ 出現狀態 */
+header.show{
+opacity:1;
+transform:translateY(0);
+pointer-events:auto;
 }
 
 /* ⭐ 隱藏狀態 */
@@ -213,7 +222,7 @@ grid-template-columns:repeat(3,1fr);
 
 </div>
 
-<header id="navbar">
+<header id="navbar" class="show">
 
 <div class="logo">
 <a href="index.html">Una</a>
@@ -239,11 +248,11 @@ window.addEventListener("scroll", () => {
 
 let currentScroll = window.pageYOffset;
 
-/* ⭐ 只有在最上面才顯示 */
+/* ⭐ 在最上面才出現 */
 if (currentScroll < 50) {
-navbar.classList.remove("hide");
+navbar.classList.add("show");
 } else {
-navbar.classList.add("hide");
+navbar.classList.remove("show");
 }
 
 });
