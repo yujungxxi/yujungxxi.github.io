@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Spain</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+color:white;
+background:black;
+}
+
+/* ===== NAV ===== */
+
+header{
+position:fixed;
+top:30px;
+left:40px;
+right:40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+z-index:1000;
+
+opacity:0;
+transform:translateY(-20px);
+transition:all 0.6s ease;
+pointer-events:none;
+}
+
+header.show{
+opacity:1;
+transform:translateY(0);
+pointer-events:auto;
+}
+
+.logo a{
+color:white;
+text-decoration:none;
+font-size:28px;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+}
+
+/* ===== SECTION (每一張照片) ===== */
+
+.section{
+height:100vh;
+position:relative;
+}
+
+/* 背景圖片 */
+
+.section img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* 黑色漸層（讓文字清楚） */
+
+.overlay{
+position:absolute;
+bottom:0;
+left:0;
+width:100%;
+height:40%;
+
+background:linear-gradient(
+to top,
+rgba(0,0,0,0.7),
+rgba(0,0,0,0)
+);
+}
+
+/* 文字 */
+
+.text{
+position:absolute;
+bottom:60px;
+left:60px;
+max-width:500px;
+}
+
+.text h1{
+font-size:50px;
+font-family:Georgia, serif;
+margin-bottom:20px;
+}
+
+.text p{
+line-height:1.8;
+opacity:0.9;
+}
+
+/* 手機也維持比例 */
+
+@media (max-width:900px){
+
+.text{
+left:30px;
+right:30px;
+bottom:40px;
+}
+
+.text h1{
+font-size:34px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<header id="navbar" class="show">
+
+<div class="logo">
+<a href="travel.html">Una</a>
+</div>
+
+<nav>
+<a href="travel.html">Travel</a>
+</nav>
+
+</header>
+
+<!-- SECTION 1 -->
+
+<div class="section">
+
+<img src="images/travel/spain1.jpg">
+
+<div class="overlay"></div>
+
+<div class="text">
+<h1>Spain</h1>
+<p>
+Golden light, warm air, and streets that feel like stories.
+Spain was a place where time slowed down, and every corner held a quiet beauty.
+</p>
+</div>
+
+</div>
+
+<!-- SECTION 2 -->
+
+<div class="section">
+
+<img src="images/travel/spain2.jpg">
+
+<div class="overlay"></div>
+
+<div class="text">
+<h1>Barcelona</h1>
+<p>
+Colors, textures, and architecture that feels alive.
+Walking through the city felt like stepping into art itself.
+</p>
+</div>
+
+</div>
+
+<!-- SECTION 3 -->
+
+<div class="section">
+
+<img src="images/travel/spain3.jpg">
+
+<div class="overlay"></div>
+
+<div class="text">
+<h1>Moments</h1>
+<p>
+Small cafés, quiet mornings, and golden sunsets —
+the kind of moments that stay long after the trip ends.
+</p>
+</div>
+
+</div>
+
+<!-- NAV 控制 -->
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+let currentScroll = window.pageYOffset;
+
+/* 只有最上面顯示 */
+if (currentScroll < 50) {
+navbar.classList.add("show");
+} else {
+navbar.classList.remove("show");
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
