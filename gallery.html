@@ -232,35 +232,18 @@ grid-template-columns:repeat(3,1fr);
   
 <script>
 
-let lastScroll = 0;
 const navbar = document.getElementById("navbar");
 
 window.addEventListener("scroll", () => {
 
 let currentScroll = window.pageYOffset;
 
-/* 在最上面 → 一定顯示 */
-if (currentScroll <= 0) {
+/* ⭐ 只有在最上面才顯示 */
+if (currentScroll < 50) {
 navbar.classList.remove("hide");
-return;
-}
-
-/* ⭐ 避免微小抖動 */
-if (Math.abs(currentScroll - lastScroll) < 10) {
-return;
-}
-
-/* 往下滑 → 隱藏 */
-if (currentScroll > lastScroll && currentScroll > 100) {
+} else {
 navbar.classList.add("hide");
 }
-
-/* 往上滑 → 顯示 */
-else if (currentScroll < lastScroll) {
-navbar.classList.remove("hide");
-}
-
-lastScroll = currentScroll;
 
 });
 
