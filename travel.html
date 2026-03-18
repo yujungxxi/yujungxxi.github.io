@@ -121,9 +121,9 @@ gap:40px;
 }
 
 .card{
-position:relative;
-aspect-ratio:1/1;
-overflow:hidden;
+display:flex;
+flex-direction:column;
+gap:12px;
 cursor:pointer;
 }
 
@@ -135,16 +135,16 @@ transition:0.5s;
 }
 
 .card:hover img{
-transform:scale(1.1);
+transform:scale(1.05);
+transition:0.4s;
 }
-
+  
 .card-title{
-position:absolute;
-bottom:20px;
-left:20px;
 font-size:20px;
-background:rgba(0,0,0,0.4);
-padding:6px 10px;
+font-family:Georgia, serif;
+color:white;
+text-align:left;
+letter-spacing:1px;
 }
 
 /* 手機也維持比例（只是縮小） */
