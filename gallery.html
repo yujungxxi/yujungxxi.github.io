@@ -20,11 +20,21 @@ top:30px;
 left:40px;
 right:40px;
 display:flex;
-align-items:center;
 justify-content:space-between;
+align-items:center;
 z-index:1000;
+
+/* ⭐ 關鍵動畫 */
+transition:opacity 0.4s ease, transform 0.4s ease;
 }
-  
+
+/* ⭐ 隱藏狀態 */
+header.hide{
+opacity:0;
+transform:translateY(-50px);
+pointer-events:none;
+}
+
 .logo a{
 color:#111;
 font-size:30px;
