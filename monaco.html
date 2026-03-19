@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Monaco</title>
+
+<style>
+
+/* ===== 基本 ===== */
+
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+background:black;
+color:white;
+}
+
+/* ===== NAV ===== */
+
+header{
+position:fixed;
+top:30px;
+left:40px;
+right:40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+z-index:1000;
+
+opacity:0;
+transition:0.5s;
+pointer-events:none;
+}
+
+header.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.logo a{
+font-size:28px;
+font-weight:600;
+text-decoration:none;
+color:white;
+}
+
+nav a{
+margin-left:25px;
+font-size:18px;
+text-decoration:none;
+color:white;
+}
+
+/* ===== HERO（奢華感） ===== */
+
+.hero{
+height:100vh;
+position:relative;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.75) contrast(1.1);
+}
+
+.hero-text{
+position:absolute;
+bottom:80px;
+left:60px;
+}
+
+.hero-text h1{
+font-size:60px;
+font-family:Georgia, serif;
+margin-bottom:20px;
+letter-spacing:2px;
+}
+
+.hero-text p{
+max-width:400px;
+line-height:1.8;
+opacity:0.85;
+}
+
+/* ===== CITY 共用 ===== */
+
+.city{
+width:90vw;
+max-width:1100px;
+margin:160px auto;
+}
+
+.city h2{
+font-size:40px;
+font-family:Georgia, serif;
+margin-bottom:40px;
+}
+
+/* ===== Monte Carlo（Prague layout） ===== */
+
+/* ===== Monte Carlo NEW Layout ===== */
+
+.monte{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+align-items:stretch;
+}
+
+.main-img img{
+width:100%;
+height:100%;
+aspect-ratio:16/10;
+object-fit:cover;
+}
+
+.side{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.tall{
+aspect-ratio:3/4;
+object-fit:cover;
+width:100%;
+}
+
+.square{
+aspect-ratio:1/1;
+object-fit:cover;
+width:100%;
+}
+
+/* 手機 */
+
+@media (max-width:900px){
+
+.monte{
+grid-template-columns:1fr;
+}
+
+.side{
+flex-direction:row;
+}
+
+}
+
+
+/* ===== Back ===== */
+
+.back{
+width:90vw;
+max-width:1100px;
+margin:120px auto;
+}
+
+.back a{
+text-decoration:none;
+color:white;
+font-size:18px;
+}
+
+/* ===== 手機 ===== */
+
+@media (max-width:900px){
+
+.hero-text{
+left:30px;
+right:30px;
+}
+
+.hero-text h1{
+font-size:38px;
+}
+
+.monte{
+grid-template-columns:1fr;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<header id="navbar" class="show">
+
+<div class="logo">
+<a href="index.html">Una</a>
+</div>
+
+<nav>
+<a href="travel.html">Travel</a>
+<a href="france.html">France</a>
+<a href="italy.html">Italy</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<img src="images/travel/monaco1.jpg">
+
+<div class="hero-text">
+<h1>Monaco</h1>
+<p>
+A place where the sea meets luxury —
+quiet, polished, and endlessly refined.
+</p>
+</div>
+
+</div>
+
+<!-- Monte Carlo -->
+
+<div class="city">
+
+<h2>Monte Carlo</h2>
+
+<div class="monte">
+
+  <!-- 左：大圖 -->
+  <div class="main-img">
+    <img src="images/travel/monaco2.jpg">
+  </div>
+
+  <!-- 右：拼貼 -->
+  <div class="side">
+    <img src="images/travel/monaco3.jpg" class="tall">
+    <img src="images/travel/monaco4.jpg" class="square">
+  </div>
+
+</div>
+
+<div class="text">
+Monte Carlo feels cinematic —
+grand casinos, ocean views, and a quiet sense of luxury.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- Back -->
+
+<div class="back">
+<a href="travel.html">← Back to Travel</a>
+</div>
+
+<!-- NAV 動畫 -->
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY < 80){
+navbar.classList.add("show");
+}else{
+navbar.classList.remove("show");
+}
+
+});
+
+</script>
+
+</body>
+</html>
