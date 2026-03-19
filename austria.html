@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Austria</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: #000;
+      color: #fff;
+      font-family: "Helvetica Neue", serif;
+    }
+
+    .container {
+      width: 85%;
+      margin: auto;
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-bottom: 1px solid #444;
+    }
+
+    .hero h1 {
+      font-size: 90px;
+      letter-spacing: 8px;
+      margin: 0;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #aaa;
+      margin-top: 20px;
+      max-width: 400px;
+    }
+
+    /* Vienna Section */
+    .vienna {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      padding: 100px 0;
+      align-items: center;
+    }
+
+    .vienna img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+
+    .vienna-text h2 {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .vienna-text p {
+      color: #bbb;
+      line-height: 1.8;
+    }
+
+    /* Hallstatt Section */
+    .hallstatt {
+      padding: 120px 0;
+      text-align: center;
+      border-top: 1px solid #333;
+    }
+
+    .hallstatt h2 {
+      font-size: 48px;
+      margin-bottom: 30px;
+    }
+
+    .hallstatt img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      margin-bottom: 30px;
+    }
+
+    .hallstatt p {
+      max-width: 600px;
+      margin: auto;
+      color: #aaa;
+      line-height: 1.8;
+    }
+
+    /* Back button */
+    .back {
+      position: fixed;
+      top: 30px;
+      left: 30px;
+      text-decoration: none;
+      color: #888;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .back:hover {
+      color: #fff;
+    }
+
+  </style>
+</head>
+
+<body>
+
+<a href="travel.html" class="back">← BACK</a>
+
+<div class="container">
+
+  <!-- Hero -->
+  <section class="hero">
+    <h1>AUSTRIA</h1>
+    <p>
+      A quiet symphony of imperial elegance and alpine dreams.
+    </p>
+  </section>
+
+  <!-- Vienna -->
+  <section class="vienna">
+    <img src="vienna.jpg" alt="Vienna">
+    <div class="vienna-text">
+      <h2>Vienna</h2>
+      <p>
+        Vienna feels like a living museum — where music, architecture,
+        and history blend into everyday life.
+      </p>
+      <p>
+        From grand palaces to quiet cafés, every corner carries
+        a sense of timeless elegance.
+      </p>
+    </div>
+  </section>
+
+  <!-- Hallstatt -->
+  <section class="hallstatt">
+    <h2>Hallstatt</h2>
+    <img src="hallstatt.jpg" alt="Hallstatt">
+    <p>
+      Nestled between mountains and a mirror-like lake,
+      Hallstatt feels almost unreal.
+    </p>
+    <p>
+      A place where time slows down, and every view
+      looks like a painting.
+    </p>
+  </section>
+
+</div>
+
+</body>
+</html>
