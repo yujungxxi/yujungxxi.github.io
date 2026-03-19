@@ -15,7 +15,7 @@ background:black;
 color:white;
 }
 
-/* ===== NAV（只在最上面出現） ===== */
+/* ===== NAV ===== */
 
 header{
 position:fixed;
@@ -48,105 +48,116 @@ color:white;
 
 nav a{
 margin-left:25px;
+font-size:18px;
 text-decoration:none;
 color:white;
-font-size:18px;
 }
 
-/* ===== HERO 拼貼 ===== */
+/* ===== HERO（電影感） ===== */
 
 .hero{
-width:92vw;
-max-width:1200px;
-margin:120px auto;
-
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
+height:100vh;
+position:relative;
 }
-
-.left, .right{
-display:flex;
-flex-direction:column;
-gap:20px;
-}
-
-.big{ aspect-ratio:4/5; }
-.small{ aspect-ratio:1/1; }
 
 .hero img{
 width:100%;
 height:100%;
 object-fit:cover;
+filter:brightness(0.75);
 }
 
-/* ===== CITY 共用 ===== */
+.hero-text{
+position:absolute;
+bottom:80px;
+left:60px;
+}
+
+.hero-text h1{
+font-size:60px;
+font-family:Georgia, serif;
+margin-bottom:20px;
+}
+
+.hero-text p{
+max-width:400px;
+line-height:1.8;
+opacity:0.8;
+}
+
+/* ===== 共用 ===== */
 
 .city{
-width:92vw;
+width:90vw;
 max-width:1100px;
-margin:140px auto;
+margin:160px auto;
 }
 
 .city h2{
-font-size:38px;
+font-size:40px;
 font-family:Georgia, serif;
-margin-bottom:25px;
+margin-bottom:40px;
 }
 
 .text{
-margin-top:15px;
-max-width:800px;
+margin-top:30px;
+max-width:420px;
 line-height:1.8;
+opacity:0.85;
 }
-
-/* ===== 排版 1（大左 小右） ===== */
-
-.layout-a{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:20px;
-}
-
-/* ===== 排版 2（左右交錯） ===== */
-
-.layout-b{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-
-/* ===== 排版 3（中間大 + 上下小） ===== */
-
-.layout-c{
-display:grid;
-grid-template-columns:1fr;
-gap:20px;
-}
-
-.stack{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:20px;
-}
-
-/* ===== 圖片比例 ===== */
 
 .tall{ aspect-ratio:3/4; }
-.wide{ aspect-ratio:4/3; }
 .square{ aspect-ratio:1/1; }
+.wide{ aspect-ratio:4/3; }
 
 .city img{
 width:100%;
 object-fit:cover;
 }
 
-/* ===== 返回按鈕 ===== */
+/* ===== Malaga（Czech風：上大下雙） ===== */
+
+.malaga{
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+/* ===== Barcelona（不對稱） ===== */
+
+.barcelona{
+display:grid;
+grid-template-columns:1.5fr 1fr;
+gap:30px;
+align-items:start;
+}
+
+/* ===== Madrid（橫向 editorial） ===== */
+
+.madrid{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+}
+
+.side{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+/* ===== Back ===== */
 
 .back{
-width:92vw;
+width:90vw;
 max-width:1100px;
-margin:100px auto;
+margin:120px auto;
 }
 
 .back a{
@@ -155,20 +166,25 @@ color:white;
 font-size:18px;
 }
 
-/* ===== 手機（保持風格但單欄） ===== */
+/* ===== 手機 ===== */
 
 @media (max-width:900px){
 
-.hero{
+.hero-text{
+left:30px;
+right:30px;
+}
+
+.hero-text h1{
+font-size:38px;
+}
+
+.barcelona,
+.madrid{
 grid-template-columns:1fr;
 }
 
-.layout-a,
-.layout-b{
-grid-template-columns:1fr;
-}
-
-.stack{
+.row{
 grid-template-columns:1fr;
 }
 
@@ -180,7 +196,7 @@ grid-template-columns:1fr;
 
 <body>
 
-<!-- ===== NAV ===== -->
+<!-- NAV -->
 
 <header id="navbar" class="show">
 
@@ -190,135 +206,105 @@ grid-template-columns:1fr;
 
 <nav>
 <a href="travel.html">Travel</a>
-<a href="usa.html">United States</a>
-<a href="france.html">France</a>
+<a href="czech.html">Czech</a>
+<a href="austria.html">Austria</a>
 </nav>
 
 </header>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 
 <div class="hero">
 
-<div class="left">
-<img src="images/travel/spain1.jpg" class="big">
-<img src="images/travel/spain2.jpg" class="small">
+<img src="images/travel/spain1.jpg">
+
+<div class="hero-text">
+<h1>Spain</h1>
+<p>
+Warm light, layered textures, and cities full of life and rhythm.
+</p>
 </div>
 
-<div class="right">
-<img src="images/travel/spain3.jpg" class="small">
-<img src="images/travel/spain4.jpg" class="big">
 </div>
 
-</div>
-
-<!-- ===== Malaga（排版 C 雜誌感） ===== -->
+<!-- Malaga -->
 
 <div class="city">
 
 <h2>Malaga</h2>
 
-<div class="layout-c">
+<div class="malaga">
 
-<img src="images/travel/malaga1.jpeg" class="wide">
+<img src="images/travel/malaga1.jpg" class="wide">
 
-<div class="stack">
-<img src="images/travel/malaga2.jpeg" class="square">
-<img src="images/travel/malaga3.jpeg" class="square">
+<div class="row">
+<img src="images/travel/malaga2.jpg" class="square">
+<img src="images/travel/malaga3.jpg" class="square">
 </div>
 
 </div>
 
 <div class="text">
-Warm air, golden tones, and time that slows down. Malaga feels like a memory you don’t want to leave.
+Golden tones, coastal air, and slow afternoons —
+Malaga feels warm, relaxed, and quietly vibrant.
 </div>
 
 </div>
-<!-- ===== Barcelona（排版 A） ===== -->
+
+<!-- Barcelona -->
 
 <div class="city">
 
 <h2>Barcelona</h2>
 
-<div class="layout-a">
+<div class="barcelona">
+
 <img src="images/travel/barcelona1.jpg" class="tall">
+
+<div>
 <img src="images/travel/barcelona2.jpg" class="square">
-</div>
 
 <div class="text">
-Barcelona feels like stepping into a living artwork —
-soft curves, colors, and sunlight everywhere.
+Barcelona feels like a living artwork —
+curves, colors, and sunlight in every corner.
+</div>
 </div>
 
 </div>
 
-<!-- ===== Madrid（排版 B） ===== -->
+</div>
+
+<!-- Madrid -->
 
 <div class="city">
 
 <h2>Madrid</h2>
 
-<div class="layout-b">
+<div class="madrid">
+
 <img src="images/travel/madrid1.jpg" class="wide">
+
+<div class="side">
 <img src="images/travel/madrid2.jpg" class="tall">
-</div>
-
-<div class="text">
-A quiet elegance lives in Madrid —
-morning light, open plazas, and slow afternoons.
-</div>
-
-</div>
-
-<!-- ===== Seville（排版 C 雜誌感） ===== -->
-
-<div class="city">
-
-<h2>Seville</h2>
-
-<div class="layout-c">
-
-<img src="images/travel/seville1.jpg" class="wide">
-
-<div class="stack">
-<img src="images/travel/seville2.jpg" class="square">
-<img src="images/travel/seville3.jpg" class="square">
+<img src="images/travel/madrid3.jpg" class="square">
 </div>
 
 </div>
 
 <div class="text">
-Warm air, golden tones, and time that slows down —
-Seville feels like a memory you don’t want to leave.
+Madrid moves with quiet elegance —
+open plazas, soft light, and a calm rhythm of life.
 </div>
 
 </div>
 
-<!-- ===== Valencia（再一種排版） ===== -->
-
-<div class="city">
-
-<h2>Valencia</h2>
-
-<div class="layout-a">
-<img src="images/travel/valencia1.jpg" class="square">
-<img src="images/travel/valencia2.jpg" class="tall">
-</div>
-
-<div class="text">
-A mix of modern lines and coastal calm —
-Valencia feels fresh, open, and quietly beautiful.
-</div>
-
-</div>
-
-<!-- ===== 回 Travel ===== -->
+<!-- Back -->
 
 <div class="back">
 <a href="travel.html">← Back to Travel</a>
 </div>
 
-<!-- ===== NAV 動畫 ===== -->
+<!-- NAV 動畫 -->
 
 <script>
 
