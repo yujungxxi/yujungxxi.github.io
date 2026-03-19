@@ -48,91 +48,106 @@ color:white;
 
 nav a{
 margin-left:25px;
+font-size:18px;
 text-decoration:none;
 color:white;
-font-size:18px;
 }
 
-/* ===== HERO（更乾淨） ===== */
+/* ===== HERO ===== */
 
 .hero{
-width:90vw;
-max-width:1000px;
-margin:180px auto 120px auto;
-text-align:center;
+height:100vh;
+position:relative;
 }
 
-.hero h1{
-font-size:90px;
-letter-spacing:10px;
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.8);
+}
+
+.hero-text{
+position:absolute;
+bottom:80px;
+left:60px;
+}
+
+.hero-text h1{
+font-size:60px;
+font-family:Georgia, serif;
 margin-bottom:20px;
 }
 
-.hero p{
-color:#aaa;
-max-width:500px;
-margin:auto;
+.hero-text p{
+max-width:400px;
 line-height:1.8;
+opacity:0.8;
 }
 
 /* ===== CITY 共用 ===== */
 
 .city{
-width:92vw;
+width:90vw;
 max-width:1100px;
 margin:160px auto;
 }
 
 .city h2{
-font-size:42px;
+font-size:40px;
 font-family:Georgia, serif;
-margin-bottom:30px;
+margin-bottom:40px;
 }
 
-/* ===== Vienna（左右極簡） ===== */
+/* ===== Vienna（沿用 Prague 排版） ===== */
 
 .vienna{
 display:grid;
-grid-template-columns:1.2fr 1fr;
-gap:60px;
-align-items:center;
+grid-template-columns:1.5fr 1fr;
+gap:30px;
+align-items:start;
 }
 
 .vienna img{
 width:100%;
-aspect-ratio:4/5;
 object-fit:cover;
 }
 
-.vienna-text{
-line-height:1.9;
-color:#bbb;
+.tall{ aspect-ratio:3/4; }
+.square{ aspect-ratio:1/1; }
+
+.text{
+margin-top:20px;
+max-width:400px;
+line-height:1.8;
+opacity:0.85;
 }
 
-/* ===== Hallstatt（全版沉浸） ===== */
+/* ===== Hallstatt（沿用 Cesky 排版） ===== */
 
 .hallstatt{
-text-align:center;
+display:grid;
+grid-template-columns:1fr;
+gap:30px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
 }
 
 .hallstatt img{
 width:100%;
-height:500px;
 object-fit:cover;
-margin-bottom:30px;
 }
 
-.hallstatt p{
-max-width:600px;
-margin:auto;
-color:#aaa;
-line-height:1.8;
-}
+.wide{ aspect-ratio:4/3; }
 
-/* ===== 返回 ===== */
+/* ===== Back ===== */
 
 .back{
-width:92vw;
+width:90vw;
 max-width:1100px;
 margin:120px auto;
 }
@@ -147,12 +162,21 @@ font-size:18px;
 
 @media (max-width:900px){
 
+.hero-text{
+left:30px;
+right:30px;
+}
+
+.hero-text h1{
+font-size:38px;
+}
+
 .vienna{
 grid-template-columns:1fr;
 }
 
-.hero h1{
-font-size:50px;
+.row{
+grid-template-columns:1fr;
 }
 
 }
@@ -173,8 +197,8 @@ font-size:50px;
 
 <nav>
 <a href="travel.html">Travel</a>
-<a href="czech.html">Czech Republic</a>
-<a href="france.html">France</a>
+<a href="czech.html">Czech</a>
+<a href="spain.html">Spain</a>
 </nav>
 
 </header>
@@ -182,10 +206,16 @@ font-size:50px;
 <!-- HERO -->
 
 <div class="hero">
-<h1>AUSTRIA</h1>
+
+<img src="images/travel/austria1.jpg">
+
+<div class="hero-text">
+<h1>Austria</h1>
 <p>
-A quiet symphony of imperial elegance and alpine dreams.
+A quiet harmony of imperial elegance and alpine serenity.
 </p>
+</div>
+
 </div>
 
 <!-- Vienna -->
@@ -195,18 +225,18 @@ A quiet symphony of imperial elegance and alpine dreams.
 <h2>Vienna</h2>
 
 <div class="vienna">
-<img src="images/travel/vienna1.jpg">
 
-<div class="vienna-text">
-<p>
+<img src="images/travel/vienna1.jpg" class="tall">
+
+<div>
+
+<img src="images/travel/vienna2.jpg" class="square">
+
+<div class="text">
 Vienna feels like a living museum —
 where music, architecture, and history blend into everyday life.
-</p>
+</div>
 
-<p>
-From grand palaces to quiet cafés,
-every moment carries a sense of timeless elegance.
-</p>
 </div>
 
 </div>
@@ -215,21 +245,26 @@ every moment carries a sense of timeless elegance.
 
 <!-- Hallstatt -->
 
-<div class="city hallstatt">
+<div class="city">
 
 <h2>Hallstatt</h2>
 
-<img src="images/travel/hallstatt1.jpg">
+<div class="hallstatt">
 
-<p>
+<img src="images/travel/hallstatt1.jpg" class="wide">
+
+<div class="row">
+<img src="images/travel/hallstatt2.jpg" class="square">
+<img src="images/travel/hallstatt3.jpg" class="square">
+</div>
+
+<div class="text">
 Nestled between mountains and a mirror-like lake,
-Hallstatt feels almost unreal.
-</p>
+Hallstatt feels almost unreal —
+quiet, still, and dreamlike.
+</div>
 
-<p>
-A place where time slows down,
-and every view looks like a painting.
-</p>
+</div>
 
 </div>
 
