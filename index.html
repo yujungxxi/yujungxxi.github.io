@@ -75,25 +75,31 @@ transform:scale(1.05);
 @media (max-width:900px){
 
 .gallery{
-position:static;
+position:relative;
 width:100%;
-aspect-ratio:auto;
-
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-
-padding:120px 20px 40px 20px;
+height:130vh;   /* ⭐ 給一個畫布高度 */
+padding-top:120px;
 }
 
+/* ⭐ 圖片改成 % 控制 */
 .gallery img{
-position:static;
-width:100%;
-aspect-ratio:1/1;
-object-fit:cover;
+position:absolute;
+width:38%;   /* 不再是16% */
+height:auto;
 }
 
+/* ⭐ 手機版重新排（類似但更安全） */
+
+.img1{top:5%; left:5%;}
+.img2{top:15%; left:50%;}
+.img3{top:35%; left:8%;}
+.img4{top:55%; left:48%;}
+.img5{top:75%; left:5%;}
+.img6{top:90%; left:50%;}
+.img7{top:110%; left:20%;}
+
 }
+
 
 </style>
 
