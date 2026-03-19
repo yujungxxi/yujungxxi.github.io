@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>France</title>
+
+<style>
+
+/* ===== 基本 ===== */
+
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+background:#f7f6f3;   /* 奶白色 */
+color:#222;
+}
+
+/* ===== NAV ===== */
+
+header{
+position:fixed;
+top:30px;
+left:40px;
+right:40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+z-index:1000;
+
+opacity:0;
+transition:0.5s;
+pointer-events:none;
+}
+
+header.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.logo a{
+font-size:28px;
+text-decoration:none;
+color:#222;
+}
+
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:#222;
+}
+
+/* ===== HERO（留白＋文字） ===== */
+
+.hero{
+height:90vh;
+
+display:flex;
+flex-direction:column;
+justify-content:center;
+
+padding-left:10vw;
+}
+
+.hero h1{
+font-size:64px;
+font-family:Georgia, serif;
+margin-bottom:20px;
+}
+
+.hero p{
+max-width:420px;
+line-height:1.8;
+opacity:0.7;
+}
+
+/* ===== CITY 共用 ===== */
+
+.city{
+width:90vw;
+max-width:1100px;
+margin:140px auto;
+}
+
+.city h2{
+font-size:40px;
+font-family:Georgia, serif;
+margin-bottom:40px;
+}
+
+/* ===== Marseille（大片＋小圖） ===== */
+
+.marseille{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:30px;
+align-items:start;
+}
+
+.marseille img{
+width:100%;
+object-fit:cover;
+}
+
+.wide{ aspect-ratio:4/3; }
+.square{ aspect-ratio:1/1; }
+
+.text{
+margin-top:20px;
+max-width:450px;
+line-height:1.8;
+}
+
+/* ===== Nice（對稱＋留白） ===== */
+
+.nice{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px;
+}
+
+.nice img{
+width:100%;
+aspect-ratio:3/4;
+object-fit:cover;
+}
+
+/* ===== Eze（雜誌堆疊） ===== */
+
+.eze{
+display:grid;
+grid-template-columns:1fr;
+gap:30px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.eze img{
+width:100%;
+object-fit:cover;
+}
+
+.tall{ aspect-ratio:3/4; }
+
+/* ===== Back ===== */
+
+.back{
+width:90vw;
+max-width:1100px;
+margin:120px auto;
+}
+
+.back a{
+text-decoration:none;
+color:#222;
+font-size:18px;
+}
+
+/* ===== 手機 ===== */
+
+@media (max-width:900px){
+
+.hero{
+padding-left:30px;
+padding-right:30px;
+}
+
+.hero h1{
+font-size:40px;
+}
+
+.marseille,
+.nice{
+grid-template-columns:1fr;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<header id="navbar" class="show">
+
+<div class="logo">
+<a href="index.html">Una</a>
+</div>
+
+<nav>
+<a href="travel.html">Travel</a>
+<a href="czech.html">Czech</a>
+<a href="spain.html">Spain</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>France</h1>
+
+<p>
+Soft light, coastal air, and quiet elegance —
+the south of France feels like a slow, beautiful dream.
+</p>
+
+</div>
+
+<!-- Marseille -->
+
+<div class="city">
+
+<h2>Marseille</h2>
+
+<div class="marseille">
+
+<img src="images/travel/marseille1.jpg" class="wide">
+
+<div>
+
+<img src="images/travel/marseille2.jpg" class="square">
+
+<div class="text">
+A raw and vibrant port city —
+where the sea meets history and everyday life.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Nice -->
+
+<div class="city">
+
+<h2>Nice</h2>
+
+<div class="nice">
+
+<img src="images/travel/nice1.jpg">
+<img src="images/travel/nice2.jpg">
+
+</div>
+
+<div class="text">
+Endless blue, sunlight on water,
+and a calm rhythm that feels almost timeless.
+</div>
+
+</div>
+
+<!-- Eze -->
+
+<div class="city">
+
+<h2>Èze</h2>
+
+<div class="eze">
+
+<img src="images/travel/eze1.jpg" class="wide">
+
+<div class="row">
+<img src="images/travel/eze2.jpg" class="tall">
+<img src="images/travel/eze3.jpg" class="tall">
+</div>
+
+<div class="text">
+A hilltop village above the sea —
+quiet, delicate, and filled with hidden views.
+</div>
+
+</div>
+
+</div>
+
+<!-- Back -->
+
+<div class="back">
+<a href="travel.html">← Back to Travel</a>
+</div>
+
+<!-- NAV 動畫 -->
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY < 80){
+navbar.classList.add("show");
+}else{
+navbar.classList.remove("show");
+}
+
+});
+
+</script>
+
+</body>
+</html>
