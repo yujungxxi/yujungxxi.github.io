@@ -1,157 +1,261 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <title>Austria</title>
-  <style>
-    body {
-      margin: 0;
-      background-color: #000;
-      color: #fff;
-      font-family: "Helvetica Neue", serif;
-    }
+<title>Austria</title>
 
-    .container {
-      width: 85%;
-      margin: auto;
-    }
+<style>
 
-    /* Hero */
-    .hero {
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      border-bottom: 1px solid #444;
-    }
+/* ===== 基本 ===== */
 
-    .hero h1 {
-      font-size: 90px;
-      letter-spacing: 8px;
-      margin: 0;
-    }
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+background:black;
+color:white;
+}
 
-    .hero p {
-      font-size: 18px;
-      color: #aaa;
-      margin-top: 20px;
-      max-width: 400px;
-    }
+/* ===== NAV ===== */
 
-    /* Vienna Section */
-    .vienna {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      padding: 100px 0;
-      align-items: center;
-    }
+header{
+position:fixed;
+top:30px;
+left:40px;
+right:40px;
 
-    .vienna img {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-    }
+display:flex;
+justify-content:space-between;
+align-items:center;
 
-    .vienna-text h2 {
-      font-size: 50px;
-      margin-bottom: 20px;
-    }
+z-index:1000;
 
-    .vienna-text p {
-      color: #bbb;
-      line-height: 1.8;
-    }
+opacity:0;
+transition:0.5s;
+pointer-events:none;
+}
 
-    /* Hallstatt Section */
-    .hallstatt {
-      padding: 120px 0;
-      text-align: center;
-      border-top: 1px solid #333;
-    }
+header.show{
+opacity:1;
+pointer-events:auto;
+}
 
-    .hallstatt h2 {
-      font-size: 48px;
-      margin-bottom: 30px;
-    }
+.logo a{
+font-size:28px;
+font-weight:600;
+text-decoration:none;
+color:white;
+}
 
-    .hallstatt img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      margin-bottom: 30px;
-    }
+nav a{
+margin-left:25px;
+text-decoration:none;
+color:white;
+font-size:18px;
+}
 
-    .hallstatt p {
-      max-width: 600px;
-      margin: auto;
-      color: #aaa;
-      line-height: 1.8;
-    }
+/* ===== HERO（更乾淨） ===== */
 
-    /* Back button */
-    .back {
-      position: fixed;
-      top: 30px;
-      left: 30px;
-      text-decoration: none;
-      color: #888;
-      font-size: 14px;
-      letter-spacing: 2px;
-    }
+.hero{
+width:90vw;
+max-width:1000px;
+margin:180px auto 120px auto;
+text-align:center;
+}
 
-    .back:hover {
-      color: #fff;
-    }
+.hero h1{
+font-size:90px;
+letter-spacing:10px;
+margin-bottom:20px;
+}
 
-  </style>
+.hero p{
+color:#aaa;
+max-width:500px;
+margin:auto;
+line-height:1.8;
+}
+
+/* ===== CITY 共用 ===== */
+
+.city{
+width:92vw;
+max-width:1100px;
+margin:160px auto;
+}
+
+.city h2{
+font-size:42px;
+font-family:Georgia, serif;
+margin-bottom:30px;
+}
+
+/* ===== Vienna（左右極簡） ===== */
+
+.vienna{
+display:grid;
+grid-template-columns:1.2fr 1fr;
+gap:60px;
+align-items:center;
+}
+
+.vienna img{
+width:100%;
+aspect-ratio:4/5;
+object-fit:cover;
+}
+
+.vienna-text{
+line-height:1.9;
+color:#bbb;
+}
+
+/* ===== Hallstatt（全版沉浸） ===== */
+
+.hallstatt{
+text-align:center;
+}
+
+.hallstatt img{
+width:100%;
+height:500px;
+object-fit:cover;
+margin-bottom:30px;
+}
+
+.hallstatt p{
+max-width:600px;
+margin:auto;
+color:#aaa;
+line-height:1.8;
+}
+
+/* ===== 返回 ===== */
+
+.back{
+width:92vw;
+max-width:1100px;
+margin:120px auto;
+}
+
+.back a{
+text-decoration:none;
+color:white;
+font-size:18px;
+}
+
+/* ===== 手機 ===== */
+
+@media (max-width:900px){
+
+.vienna{
+grid-template-columns:1fr;
+}
+
+.hero h1{
+font-size:50px;
+}
+
+}
+
+</style>
+
 </head>
 
 <body>
 
-<a href="travel.html" class="back">← BACK</a>
+<!-- NAV -->
 
-<div class="container">
+<header id="navbar" class="show">
 
-  <!-- Hero -->
-  <section class="hero">
-    <h1>AUSTRIA</h1>
-    <p>
-      A quiet symphony of imperial elegance and alpine dreams.
-    </p>
-  </section>
+<div class="logo">
+<a href="index.html">Una</a>
+</div>
 
-  <!-- Vienna -->
-  <section class="vienna">
-    <img src="vienna.jpg" alt="Vienna">
-    <div class="vienna-text">
-      <h2>Vienna</h2>
-      <p>
-        Vienna feels like a living museum — where music, architecture,
-        and history blend into everyday life.
-      </p>
-      <p>
-        From grand palaces to quiet cafés, every corner carries
-        a sense of timeless elegance.
-      </p>
-    </div>
-  </section>
+<nav>
+<a href="travel.html">Travel</a>
+<a href="czech.html">Czech Republic</a>
+<a href="france.html">France</a>
+</nav>
 
-  <!-- Hallstatt -->
-  <section class="hallstatt">
-    <h2>Hallstatt</h2>
-    <img src="hallstatt.jpg" alt="Hallstatt">
-    <p>
-      Nestled between mountains and a mirror-like lake,
-      Hallstatt feels almost unreal.
-    </p>
-    <p>
-      A place where time slows down, and every view
-      looks like a painting.
-    </p>
-  </section>
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+<h1>AUSTRIA</h1>
+<p>
+A quiet symphony of imperial elegance and alpine dreams.
+</p>
+</div>
+
+<!-- Vienna -->
+
+<div class="city">
+
+<h2>Vienna</h2>
+
+<div class="vienna">
+<img src="images/travel/vienna1.jpg">
+
+<div class="vienna-text">
+<p>
+Vienna feels like a living museum —
+where music, architecture, and history blend into everyday life.
+</p>
+
+<p>
+From grand palaces to quiet cafés,
+every moment carries a sense of timeless elegance.
+</p>
+</div>
 
 </div>
+
+</div>
+
+<!-- Hallstatt -->
+
+<div class="city hallstatt">
+
+<h2>Hallstatt</h2>
+
+<img src="images/travel/hallstatt1.jpg">
+
+<p>
+Nestled between mountains and a mirror-like lake,
+Hallstatt feels almost unreal.
+</p>
+
+<p>
+A place where time slows down,
+and every view looks like a painting.
+</p>
+
+</div>
+
+<!-- Back -->
+
+<div class="back">
+<a href="travel.html">← Back to Travel</a>
+</div>
+
+<!-- NAV 動畫 -->
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY < 80){
+navbar.classList.add("show");
+}else{
+navbar.classList.remove("show");
+}
+
+});
+
+</script>
 
 </body>
 </html>
