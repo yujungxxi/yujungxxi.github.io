@@ -74,29 +74,62 @@ transform:scale(1.05);
 
 @media (max-width:900px){
 
+/* logo 不變 */
+.logo{
+top:20px;
+left:20px;
+font-size:24px;
+}
+
+/* ⭐ nav 改成同一排（可滑動） */
+nav{
+top:20px;
+left:0;
+right:0;
+
+display:flex;
+justify-content:flex-end;
+
+padding-right:20px;
+
+overflow-x:auto;   /* ⭐ 關鍵 */
+white-space:nowrap;
+}
+
+/* 每個連結 */
+nav a{
+margin-left:20px;
+font-size:16px;
+flex-shrink:0;   /* ⭐ 不被壓縮 */
+}
+
+}
+
+@media (max-width:900px){
+
 .gallery{
 position:relative;
 width:100%;
-height:130vh;   /* ⭐ 給一個畫布高度 */
-padding-top:120px;
+height:140vh;
+padding-top:100px;
 }
 
-/* ⭐ 圖片改成 % 控制 */
+/* 圖片 */
 .gallery img{
 position:absolute;
-width:38%;   /* 不再是16% */
+width:40%;
 height:auto;
 }
 
-/* ⭐ 手機版重新排（類似但更安全） */
+/* ⭐ 不規則排（更自然） */
 
-.img1{top:5%; left:5%;}
-.img2{top:15%; left:50%;}
-.img3{top:35%; left:8%;}
-.img4{top:55%; left:48%;}
-.img5{top:75%; left:5%;}
-.img6{top:90%; left:50%;}
-.img7{top:110%; left:20%;}
+.img1{top:5%; left:6%;}
+.img2{top:18%; left:52%;}
+.img3{top:32%; left:10%;}
+.img4{top:50%; left:45%;}
+.img5{top:68%; left:8%;}
+.img6{top:85%; left:52%;}
+.img7{top:105%; left:20%;}
 
 }
 
