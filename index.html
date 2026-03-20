@@ -94,33 +94,34 @@ transform:scale(1.05);
 
 @media (max-width:900px){
 
-/* logo 不變 */
+/* logo */
 .logo{
 top:20px;
 left:20px;
 font-size:24px;
+z-index:1001;
 }
 
-/* ⭐ nav 改成同一排（可滑動） */
+/* nav 整條 */
 nav{
 top:20px;
-left:0;
-right:0;
+left:90px;   /* ⭐ 避開 Una */
+right:10px;
 
 display:flex;
-justify-content:flex-end;
+align-items:center;
 
-padding-right:20px;
-
-overflow-x:auto;   /* ⭐ 關鍵 */
+overflow-x:auto;   /* ⭐ 可滑 */
 white-space:nowrap;
+
+z-index:1000;
 }
 
 /* 每個連結 */
 nav a{
 margin-left:20px;
 font-size:16px;
-flex-shrink:0;   /* ⭐ 不被壓縮 */
+flex-shrink:0;
 }
 
 }
