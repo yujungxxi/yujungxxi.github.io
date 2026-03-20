@@ -138,29 +138,35 @@ letter-spacing:0.5px;
 
 .gallery{
 position:static;
-display:flex;
-flex-direction:column;
-gap:40px;
-padding:120px 6vw 60px;
-height:auto;
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:14px;
+
+padding:110px 5vw 60px;
 }
 
-/* 🔥 關掉 absolute */
+/* 圖片 */
 .gallery img{
-position:static;
+position:relative;
 width:100%;
-height:auto;
+height:auto;   /* ⭐ 不裁切 */
 }
 
-/* 左邊照片（上半） */
-.left{
-margin-bottom:10px;
-}
+/* ✨ 拼貼感（關鍵） */
 
-/* 右邊照片（下半） */
-.right{
-margin-top:10px;
-}
+/* 左右錯落 + 高低差 */
+.img1{ transform:translateY(0px); }
+.img2{ transform:translateY(25px); }
+
+.img3{ transform:translateY(-15px); }
+.img4{ transform:translateY(30px); }
+
+.img5{ transform:translateY(-10px); }
+.img6{ transform:translateY(20px); }
+
+.img7{ transform:translateY(5px); }
+
 }
   
 @media (min-width:901px){
