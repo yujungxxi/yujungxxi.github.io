@@ -106,43 +106,34 @@ transform:scale(1.05);
 
 /* ===== 📱 MOBILE（關鍵） ===== */
 
-@media (max-width:900px){
+  
+@media (max-width:768px){
 
 /* logo */
 .logo{
-top:20px;
-left:20px;
-font-size:24px;
-z-index:1001;
+top:18px;
+left:18px;
+font-size:20px;
 }
 
+/* nav */
 nav{
-position:fixed;
 top:20px;
-left:80px;
-right:10px;
+right:15px;
 
 display:flex;
-gap:18px;
-
-overflow-x:auto;   /* ⭐ 可以滑 */
-white-space:nowrap;
-
--webkit-overflow-scrolling:touch;
+gap:10px;
 }
 
-/* 隱藏 scrollbar（更乾淨） */
-nav::-webkit-scrollbar{
-display:none;
-}
-
+/* 每個按鈕 */
 nav a{
-flex-shrink:0;
-font-size:16px;
+margin-left:0;
+font-size:12px;   /* ⭐ 縮小 */
+letter-spacing:0.5px;
 }
 
 }
-
+  
 @media (max-width:768px){
 
 .gallery{
