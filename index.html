@@ -1,183 +1,152 @@
 <!DOCTYPE html>
 <html>
-  
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Una Photo Journal</title>
 
 <style>
-  
-*{
-box-sizing:border-box;
+* {
+  box-sizing: border-box;
 }
 
-html, body{
-overflow-x:hidden;   /* ⭐ 防止往右爆出去 */
-}
-  
-body{
-margin:0;
-font-family:Helvetica, Arial, sans-serif;
-background:#f7f7f7;
+html, body {
+  overflow-x: hidden;
 }
 
-/* ===== NAV ===== */
-
-nav{
-position:fixed;
-top:30px;
-right:40px;
-font-size:18px;
-z-index:1000;
+body {
+  margin: 0;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #f7f7f7;
 }
 
-nav a{
-margin-left:25px;
-text-decoration:none;
-color:black;
+/* ===== NAV & LOGO ===== */
+nav {
+  position: fixed;
+  top: 30px;
+  right: 40px;
+  font-size: 18px;
+  z-index: 1000;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-nav{
-max-width:100%;
-overflow-x:auto;
-white-space:nowrap;
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: black;
 }
 
-.logo{
-position:fixed;
-top:30px;
-left:40px;
-font-size:30px;
-font-weight:600;
-z-index:1000;
+.logo {
+  position: fixed;
+  top: 30px;
+  left: 40px;
+  font-size: 30px;
+  font-weight: 600;
+  z-index: 1000;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-nav{
-transition:opacity 0.5s ease, transform 0.5s ease;
+nav.hide, .logo.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
 }
 
-nav.hide{
-opacity:0;
-transform:translateY(-20px);
-pointer-events:none;
+/* ===== DESKTOP 拼貼 (電腦版保持不動) ===== */
+.gallery {
+  position: relative;
+  width: 100%;
+  margin: auto;
+  padding-top: 120px;
 }
 
-.logo{
-transition:opacity 0.5s ease, transform 0.5s ease;
+.gallery img {
+  position: absolute;
+  width: 16%;
+  max-width: 100%;
+  height: auto;
+  transition: 0.3s;
 }
 
-.logo.hide{
-opacity:0;
-transform:translateY(-20px);
-pointer-events:none;
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
-/* ===== DESKTOP 拼貼 ===== */
+/* 電腦版位置 */
+.img1 { top: 18%; left: 12%; }
+.img2 { top: 25%; left: 30%; }
+.img3 { top: 43%; left: 9%; }
+.img4 { top: 65%; left: 28%; }
+.img5 { top: 38%; left: 55%; }
+.img6 { top: 55%; left: 73%; }
+.img7 { top: 18%; left: 60%; }
 
-.gallery{
-position:relative;
-width:100%;
-margin:auto;
-padding-top:120px;
+/* ===== 📱 MOBILE (重點修正區) ===== */
+@media (max-width: 768px) {
+  .logo {
+    top: 18px;
+    left: 18px;
+    font-size: 20px;
+  }
+
+  nav {
+    top: 20px;
+    right: 15px;
+    display: flex;
+    gap: 10px;
+    max-width: 70%;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  nav a {
+    margin-left: 0;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  /* 重塑手機版容器 */
+  .gallery {
+    position: relative; /* 這裡改為 relative 以確保內容撐開 */
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 兩欄 */
+    gap: 20px; /* 圖片間距 */
+    padding: 100px 20px 100px; /* 上、左右、下 留白，防止切到 */
+  }
+
+  .gallery img {
+    position: relative; /* 覆蓋掉電腦版的 absolute */
+    width: 100%;
+    top: auto !important;   /* ⭐ 強制清除電腦版的 top */
+    left: auto !important;  /* ⭐ 強制清除電腦版的 left */
+    object-fit: contain;
+  }
+
+  /* ✨ 重新定義手機版的「錯位拼貼感」 */
+  /* 利用 margin-top 做出高低落差，而不會像 absolute 一樣把圖切掉 */
+  .img1 { margin-top: 0; }
+  .img2 { margin-top: 40px; }
+  .img3 { margin-top: -20px; }
+  .img4 { margin-top: 20px; }
+  .img5 { margin-top: -30px; }
+  .img6 { margin-top: 10px; }
+  .img7 { margin-top: -10px; }
+
+  /* 為了更有拼貼感，可以讓某些圖片縮放一點點或微轉 */
+  .gallery img:nth-child(odd) {
+    transform: rotate(-2deg) scale(0.95);
+  }
+  .gallery img:nth-child(even) {
+    transform: rotate(2deg) scale(0.95);
+  }
 }
 
-.gallery img{
-position:absolute;
-width:16%;
-max-width:100%;
-height:auto;
-transition:0.3s;
+/* 確保大螢幕維持比例 */
+@media (min-width: 901px) {
+  .gallery {
+    aspect-ratio: 16/9;
+  }
 }
-
-.gallery img:hover{
-transform:scale(1.05);
-}
-
-/* 拼貼位置 */
-
-.img1{top:18%; left:12%;}
-.img2{top:25%; left:30%;}
-.img3{top:43%; left:9%;}
-.img4{top:65%; left:28%;}
-.img5{top:38%; left:55%;}
-.img6{top:55%; left:73%;}
-.img7{top:18%; left:60%;}
-
-/* ===== 📱 MOBILE（關鍵） ===== */
-
-  
-@media (max-width:768px){
-
-/* logo */
-.logo{
-top:18px;
-left:18px;
-font-size:20px;
-}
-
-/* nav */
-nav{
-top:20px;
-right:15px;
-
-display:flex;
-gap:10px;
-}
-
-/* 每個按鈕 */
-nav a{
-margin-left:0;
-font-size:12px;   /* ⭐ 縮小 */
-letter-spacing:0.5px;
-}
-
-}
-  
-@media (max-width:768px){
-
-.gallery{
-position:static;
-
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-
-padding:110px 5vw 60px;
-}
-
-/* 圖片 */
-.gallery img{
-position:relative;
-width:100%;
-height:auto;   /* ⭐ 不裁切 */
-}
-
-/* ✨ 拼貼感（關鍵） */
-
-/* 左右錯落 + 高低差 */
-.img1{ transform:translateY(0px); }
-.img2{ transform:translateY(25px); }
-
-.img3{ transform:translateY(-15px); }
-.img4{ transform:translateY(30px); }
-
-.img5{ transform:translateY(-10px); }
-.img6{ transform:translateY(20px); }
-
-.img7{ transform:translateY(5px); }
-
-}
-  
-@media (min-width:901px){
-.gallery{
-aspect-ratio:16/9;
-}
-}
-
-  
 </style>
-
 </head>
 
 <body>
@@ -185,44 +154,38 @@ aspect-ratio:16/9;
 <div class="logo">Una</div>
 
 <nav>
-<a href="about.html">About</a>
-<a href="gallery.html">Gallery</a>
-<a href="travel.html">Travel</a>
-<a href="photos.html">Photos</a>
-<a href="views.html">Views</a>
-<a href="friends.html">Friends</a>
+  <a href="about.html">About</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="travel.html">Travel</a>
+  <a href="photos.html">Photos</a>
+  <a href="views.html">Views</a>
+  <a href="friends.html">Friends</a>
 </nav>
 
 <div class="gallery">
-
-<img src="images/index/index1.JPG" class="img1 left">
-<img src="images/index/index2.JPG" class="img2 left">
-<img src="images/index/index3.JPG" class="img3 left">
-<img src="images/index/index4.png" class="img4 left">
-
-<img src="images/index/index5.JPG" class="img5 right">
-<img src="images/index/index6.JPG" class="img6 right">
-<img src="images/index/index7.JPG" class="img7 right">
-  
+  <img src="images/index/index1.JPG" class="img1">
+  <img src="images/index/index2.JPG" class="img2">
+  <img src="images/index/index3.JPG" class="img3">
+  <img src="images/index/index4.png" class="img4">
+  <img src="images/index/index5.JPG" class="img5">
+  <img src="images/index/index6.JPG" class="img6">
+  <img src="images/index/index7.JPG" class="img7">
 </div>
-<script>
 
+<script>
 const nav = document.querySelector("nav");
 const logo = document.querySelector(".logo");
 
 window.addEventListener("scroll", () => {
-
-if(window.scrollY < 50){
-nav.classList.remove("hide");
-logo.classList.remove("hide");
-}else{
-nav.classList.add("hide");
-logo.classList.add("hide");
-}
-
+  if (window.scrollY < 50) {
+    nav.classList.remove("hide");
+    logo.classList.remove("hide");
+  } else {
+    nav.classList.add("hide");
+    logo.classList.add("hide");
+  }
 });
-
 </script>
-  
+
 </body>
 </html>
