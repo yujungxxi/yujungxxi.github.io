@@ -81,63 +81,58 @@ nav.hide, .logo.hide {
 .img7 { top: 18%; left: 60%; }
 
 /* ===== 📱 MOBILE (重點修正區) ===== */
+/* ===== 📱 MOBILE 修正版 (無旋轉、緊湊拼貼) ===== */
 @media (max-width: 768px) {
+  /* Logo & Nav 調整 */
   .logo {
-    top: 18px;
+    top: 15px;
     left: 18px;
     font-size: 20px;
   }
 
   nav {
-    top: 20px;
+    top: 18px;
     right: 15px;
     display: flex;
-    gap: 10px;
-    max-width: 70%;
-    overflow-x: auto;
-    white-space: nowrap;
+    gap: 8px;
   }
 
   nav a {
     margin-left: 0;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.5px;
   }
 
-  /* 重塑手機版容器 */
+  /* 調整容器：縮小間距，消除空洞感 */
   .gallery {
-    position: relative; /* 這裡改為 relative 以確保內容撐開 */
+    position: relative;
     display: grid;
     grid-template-columns: 1fr 1fr; /* 兩欄 */
-    gap: 20px; /* 圖片間距 */
-    padding: 100px 20px 100px; /* 上、左右、下 留白，防止切到 */
+    column-gap: 12px; /* 左右間距 */
+    row-gap: 8px;    /* ⭐ 極小的行間距，防止看起來像少一張圖 */
+    padding: 80px 12px 60px; /* 上方留白縮減到 80px */
   }
 
   .gallery img {
-    position: relative; /* 覆蓋掉電腦版的 absolute */
+    position: relative;
     width: 100%;
-    top: auto !important;   /* ⭐ 強制清除電腦版的 top */
-    left: auto !important;  /* ⭐ 強制清除電腦版的 left */
+    top: auto !important;   /* 清除電腦版絕對定位 */
+    left: auto !important;  /* 清除電腦版絕對定位 */
     object-fit: contain;
+    /* 取消旋轉，改用淡淡的陰影增加質感 */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08); 
   }
 
-  /* ✨ 重新定義手機版的「錯位拼貼感」 */
-  /* 利用 margin-top 做出高低落差，而不會像 absolute 一樣把圖切掉 */
-  .img1 { margin-top: 0; }
-  .img2 { margin-top: 40px; }
-  .img3 { margin-top: -20px; }
-  .img4 { margin-top: 20px; }
-  .img5 { margin-top: -30px; }
-  .img6 { margin-top: 10px; }
-  .img7 { margin-top: -10px; }
-
-  /* 為了更有拼貼感，可以讓某些圖片縮放一點點或微轉 */
-  .gallery img:nth-child(odd) {
-    transform: scale(0.95);
-  }
-  .gallery img:nth-child(even) {
-    transform: scale(0.95);
-  }
+  /* ✨ 緊湊型拼貼位移 (不使用 Rotate) ✨ */
+  /* 我們讓右邊那欄 (2, 4, 6) 稍微往下偏一點，左邊那欄保持緊湊 */
+  
+  .img1 {transform: translateY(0); }
+  .img2 {transform: translateY(15px); /* 右排微降 */}
+  .img3 {transform: translateY(-5px); /* ⭐ 微調向上，緊貼第一張 */}
+  .img4 {transform: translateY(10px); }
+  .img5 {transform: translateY(-10px); /* ⭐ 微調向上，緊貼第三張 */}
+  .img6 {transform: translateY(5px); }
+  .img7 {transform: translateY(-5px); }
 }
 
 /* 確保大螢幕維持比例 */
