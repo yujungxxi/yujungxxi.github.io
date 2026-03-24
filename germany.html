@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Germany - Travel</title>
+
+<style>
+
+/* ===== 基本 ===== */
+
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+background:black;
+color:white;
+}
+
+/* ===== NAV ===== */
+
+header{
+position:fixed;
+top:30px;
+left:40px;
+right:40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+z-index:1000;
+
+opacity:0;
+transition:0.5s;
+pointer-events:none;
+}
+
+header.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.logo a{
+font-size:28px;
+font-weight:600;
+text-decoration:none;
+color:white;
+}
+
+nav a{
+margin-left:25px;
+font-size:18px;
+text-decoration:none;
+color:white;
+}
+
+/* ===== HERO（電影感） ===== */
+
+.hero{
+height:100vh;
+position:relative;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.7);
+}
+
+.hero-text{
+position:absolute;
+bottom:80px;
+left:60px;
+}
+
+.hero-text h1{
+font-size:60px;
+font-family:Georgia, serif;
+margin-bottom:20px;
+}
+
+.hero-text p{
+max-width:800px;
+line-height:1.8;
+opacity:0.8;
+}
+
+/* ===== 共用 ===== */
+
+.city{
+width:90vw;
+max-width:1100px;
+margin:160px auto;
+}
+
+.city h2{
+font-size:40px;
+font-family:Georgia, serif;
+margin-bottom:40px;
+}
+
+.text{
+margin-top:30px;
+max-width:420px;
+line-height:1.8;
+opacity:0.85;
+}
+
+.tall{ aspect-ratio:3/4; }
+.square{ aspect-ratio:1/1; }
+.wide{ aspect-ratio:4/3; }
+
+.city img{
+width:100%;
+object-fit:cover;
+}
+
+/* ===== Bremen（佈局：上大下雙） ===== */
+
+.bremen{
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+/* ===== Hamburg（佈局：橫向編輯感） ===== */
+
+.hamburg{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+}
+
+.side{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+/* ===== Back ===== */
+
+.back{
+width:90vw;
+max-width:1100px;
+margin:120px auto;
+}
+
+.back a{
+text-decoration:none;
+color:white;
+font-size:18px;
+}
+
+/* ===== 手機版優化 ===== */
+
+@media (max-width:900px){
+
+.hero-text{
+left:30px;
+right:30px;
+}
+
+.hero-text h1{
+font-size:38px;
+}
+
+.hamburg{
+grid-template-columns:1fr;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<header id="navbar" class="show">
+
+<div class="logo">
+<a href="index.html">Una</a>
+</div>
+
+<nav>
+<a href="travel.html">Travel</a>
+<a href="spain.html">Spain</a>
+<a href="uk.html">United Kingdom</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<!-- 這裡替換成德國的封面圖 -->
+<img src="images/travel/germany_hero.jpg">
+
+<div class="hero-text">
+<h1>Germany</h1>
+<p>
+North-wind stories, red brick walls, and the quiet rhythm of the canals. 
+A blend of Hanseatic history and modern soul.
+</p>
+</div>
+
+</div>
+
+<!-- Bremen -->
+
+<div class="city">
+
+<h2>Bremen</h2>
+
+<div class="bremen">
+
+<img src="images/travel/bremen1.jpg" class="wide">
+
+<div class="row">
+<img src="images/travel/bremen2.jpg" class="square">
+<img src="images/travel/bremen3.jpg" class="square">
+</div>
+
+</div>
+
+<div class="text">
+Narrow cobblestone alleys and fairytale charm — 
+Bremen feels like a story preserved in time, 
+where every corner of the Schnoor district whispers old legends.
+</div>
+
+</div>
+
+<!-- Hamburg -->
+
+<div class="city">
+
+<h2>Hamburg</h2>
+
+<div class="hamburg">
+
+<img src="images/travel/hamburg1.jpg" class="wide">
+
+<div class="side">
+<img src="images/travel/hamburg2.jpg" class="tall">
+<img src="images/travel/hamburg3.jpg" class="square">
+</div>
+
+</div>
+
+<div class="text">
+The Gateway to the World — 
+Hamburg is defined by its vast harbor, the industrial beauty of Speicherstadt, 
+and a pulse that moves with the tides of the Elbe.
+</div>
+
+</div>
+
+<!-- Back -->
+
+<div class="back">
+<a href="travel.html">← Back to Travel</a>
+</div>
+
+<!-- NAV 動畫 -->
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY < 80){
+navbar.classList.add("show");
+}else{
+navbar.classList.remove("show");
+}
+
+});
+
+</script>
+
+</body>
+</html>
