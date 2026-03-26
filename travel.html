@@ -135,6 +135,7 @@ flex-direction:column;
 gap:12px;
 cursor:pointer;
 overflow:hidden; /* ⭐ 關鍵 */
+background:black; /* ⭐ 防止閃黑露底 */
 }
 
 .card img{
@@ -144,17 +145,17 @@ object-fit:cover;
 object-position:center;
 display:block;
 transition:transform 0.5s ease;
+  
+/* ⭐ 修復黑閃 */
+transform:translateZ(0);
+backface-visibility:hidden;
+will-change:transform;
 }
 
 /* ❌ 不要再用 img:hover */
 /* ✅ 改成這個 */
 .card:hover img{
 transform:scale(1.05);
-}
-
-.card img{
-backface-visibility:hidden;
-transform:translateZ(0);
 }
   
 .card-title{
