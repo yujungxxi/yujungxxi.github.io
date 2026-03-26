@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Belgium</title>
+
+<style>
+
+/* ===== 基本 ===== */
+
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+background:black;
+color:white;
+}
+
+/* ===== NAV ===== */
+
+header{
+position:fixed;
+top:30px;
+left:40px;
+right:40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+z-index:1000;
+
+opacity:0;
+transition:0.5s;
+pointer-events:none;
+}
+
+header.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.logo a{
+font-size:28px;
+font-weight:600;
+text-decoration:none;
+color:white;
+}
+
+nav a{
+margin-left:25px;
+font-size:18px;
+text-decoration:none;
+color:white;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+height:100vh;
+position:relative;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.75);
+}
+
+.hero-text{
+position:absolute;
+bottom:80px;
+left:60px;
+}
+
+.hero-text h1{
+font-size:60px;
+font-family:Georgia, serif;
+margin-bottom:20px;
+}
+
+.hero-text p{
+max-width:400px;
+line-height:1.8;
+opacity:0.85;
+}
+
+/* ===== CITY ===== */
+
+.city{
+width:90vw;
+max-width:1100px;
+margin:160px auto;
+}
+
+.city h2{
+font-size:40px;
+font-family:Georgia, serif;
+margin-bottom:50px;
+}
+
+/* ===== Brussels 特別排版 ===== */
+
+.brussels{
+display:grid;
+grid-template-columns:1fr 2fr 1fr;
+gap:25px;
+align-items:center;
+}
+
+/* 左右小圖 */
+
+.side{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+/* 圖片比例 */
+
+.tall{ aspect-ratio:3/4; }
+.square{ aspect-ratio:1/1; }
+.wide{ aspect-ratio:4/3; }
+
+.city img{
+width:100%;
+object-fit:cover;
+}
+
+/* 主圖 */
+
+.main img{
+width:100%;
+aspect-ratio:4/5;
+object-fit:cover;
+}
+
+/* 文字 */
+
+.text{
+margin-top:50px;
+max-width:500px;
+line-height:1.8;
+opacity:0.85;
+}
+
+/* ===== Back ===== */
+
+.back{
+width:90vw;
+max-width:1100px;
+margin:120px auto;
+}
+
+.back a{
+text-decoration:none;
+color:white;
+font-size:18px;
+}
+
+/* ===== 手機 ===== */
+
+@media (max-width:900px){
+
+.hero-text{
+left:30px;
+right:30px;
+}
+
+.hero-text h1{
+font-size:38px;
+}
+
+.brussels{
+grid-template-columns:1fr;
+}
+
+.side{
+flex-direction:row;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<header id="navbar" class="show">
+
+<div class="logo">
+<a href="index.html">Una</a>
+</div>
+
+<nav>
+<a href="travel.html">Travel</a>
+<a href="france.html">France</a>
+<a href="czech.html">Czech</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<img src="images/travel/belgium1.jpg">
+
+<div class="hero-text">
+<h1>Belgium</h1>
+<p>
+Soft light, historic streets, and quiet moments hidden in between.
+</p>
+</div>
+
+</div>
+
+<!-- Brussels -->
+
+<div class="city">
+
+<h2>Brussels</h2>
+
+<div class="brussels">
+
+  <!-- 左 -->
+  <div class="side">
+    <img src="images/travel/brussels2.jpg" class="square">
+    <img src="images/travel/brussels3.jpg" class="tall">
+  </div>
+
+  <!-- 中 -->
+  <div class="main">
+    <img src="images/travel/brussels1.jpg">
+  </div>
+
+  <!-- 右 -->
+  <div class="side">
+    <img src="images/travel/brussels4.jpg" class="tall">
+    <img src="images/travel/brussels5.jpg" class="square">
+  </div>
+
+</div>
+
+<div class="text">
+Brussels feels quiet yet layered —
+historic facades, soft skies, and details that reveal themselves slowly.
+</div>
+
+</div>
+
+<!-- Back -->
+
+<div class="back">
+<a href="travel.html">← Back to Travel</a>
+</div>
+
+<!-- NAV 動畫 -->
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY < 80){
+navbar.classList.add("show");
+}else{
+navbar.classList.remove("show");
+}
+
+});
+
+</script>
+
+</body>
+</html>
