@@ -12,7 +12,7 @@ body{
 margin:0;
 font-family:Helvetica, Arial, sans-serif;
 background:black;
-color:#f7f6f3;   /* 奶白色 */
+color:white;
 }
 
 /* ===== NAV ===== */
@@ -48,40 +48,49 @@ color:white;
 
 nav a{
 margin-left:25px;
+font-size:18px;
 text-decoration:none;
 color:white;
 }
 
-/* ===== HERO（留白＋文字） ===== */
+/* ===== HERO ===== */
 
 .hero{
-height:90vh;
-
-display:flex;
-flex-direction:column;
-justify-content:center;
-
-padding-left:10vw;
+height:100vh;
+position:relative;
 }
 
-.hero h1{
-font-size:64px;
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.8);
+}
+
+.hero-text{
+position:absolute;
+bottom:80px;
+left:60px;
+}
+
+.hero-text h1{
+font-size:60px;
 font-family:Georgia, serif;
 margin-bottom:20px;
 }
 
-.hero p{
-max-width:420px;
+.hero-text p{
+max-width:400px;
 line-height:1.8;
-opacity:0.7;
+opacity:0.85;
 }
 
-/* ===== CITY 共用 ===== */
+/* ===== 共用 ===== */
 
 .city{
 width:90vw;
 max-width:1100px;
-margin:140px auto;
+margin:160px auto;
 }
 
 .city h2{
@@ -90,63 +99,57 @@ font-family:Georgia, serif;
 margin-bottom:40px;
 }
 
-/* ===== Marseille（大片＋小圖） ===== */
-
-.marseille{
-display:grid;
-grid-template-columns:2fr 1fr;
-gap:30px;
-align-items:start;
-}
-
-.marseille img{
-width:100%;
-object-fit:cover;
-}
-
-.wide{ aspect-ratio:4/3; }
-.square{ aspect-ratio:1/1; }
-
 .text{
-margin-top:20px;
-max-width:450px;
+margin-top:30px;
+max-width:420px;
 line-height:1.8;
+opacity:0.85;
 }
 
-/* ===== Nice（對稱＋留白） ===== */
-
-.nice{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:50px;
-}
-
-.nice img{
-width:100%;
-aspect-ratio:3/4;
-object-fit:cover;
-}
-
-/* ===== Eze（雜誌堆疊） ===== */
-
-.eze{
-display:grid;
-grid-template-columns:1fr;
-gap:30px;
-}
-
-.row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:30px;
-}
-
-.eze img{
+.city img{
 width:100%;
 object-fit:cover;
 }
 
 .tall{ aspect-ratio:3/4; }
+.square{ aspect-ratio:1/1; }
+.wide{ aspect-ratio:4/3; }
+
+/* ===== Marseille（不對稱） ===== */
+
+.marseille{
+display:grid;
+grid-template-columns:1.5fr 1fr;
+gap:30px;
+}
+
+/* ===== Nice（橫向 editorial） ===== */
+
+.nice{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+}
+
+.side{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+/* ===== Èze（上大＋下雙） ===== */
+
+.eze{
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
 
 /* ===== Back ===== */
 
@@ -166,13 +169,13 @@ font-size:18px;
 
 @media (max-width:900px){
 
-.hero{
-padding-left:30px;
-padding-right:30px;
+.hero-text{
+left:30px;
+right:30px;
 }
 
-.hero h1{
-font-size:40px;
+.hero-text h1{
+font-size:38px;
 }
 
 .marseille,
@@ -182,6 +185,10 @@ grid-template-columns:1fr;
 
 .row{
 grid-template-columns:1fr;
+}
+
+.side{
+flex-direction:row;
 }
 
 }
@@ -202,8 +209,8 @@ grid-template-columns:1fr;
 
 <nav>
 <a href="travel.html">Travel</a>
-<a href="austria.html">Austria</a>
 <a href="monaco.html">Monaco</a>
+<a href="italy.html">Italy</a>
 </nav>
 
 </header>
@@ -212,12 +219,14 @@ grid-template-columns:1fr;
 
 <div class="hero">
 
-<h1>France</h1>
+<img src="images/travel/france1.jpg">
 
+<div class="hero-text">
+<h1>France</h1>
 <p>
-Soft light, coastal air, and quiet elegance —
-the south of France feels like a slow, beautiful dream.
+Sunlight, coastlines, and quiet elegance along the south.
 </p>
+</div>
 
 </div>
 
@@ -229,15 +238,14 @@ the south of France feels like a slow, beautiful dream.
 
 <div class="marseille">
 
-<img src="images/travel/marseille1.jpg" class="wide">
+<img src="images/travel/marseille1.jpg" class="tall">
 
 <div>
-
 <img src="images/travel/marseille2.jpg" class="square">
 
 <div class="text">
-A raw and vibrant port city —
-where the sea meets history and everyday life.
+Marseille feels raw and alive —
+sea air, textured streets, and a rhythm that never quite settles.
 </div>
 
 </div>
@@ -254,19 +262,23 @@ where the sea meets history and everyday life.
 
 <div class="nice">
 
-<img src="images/travel/nice1.jpg">
-<img src="images/travel/nice2.jpg">
+<img src="images/travel/nice1.jpg" class="wide">
+
+<div class="side">
+<img src="images/travel/nice2.jpg" class="tall">
+<img src="images/travel/nice3.jpg" class="square">
+</div>
 
 </div>
 
 <div class="text">
-Endless blue, sunlight on water,
-and a calm rhythm that feels almost timeless.
+Nice moves with light —
+blue water, soft colors, and an effortless sense of calm.
 </div>
 
 </div>
 
-<!-- Eze -->
+<!-- Èze -->
 
 <div class="city">
 
@@ -277,15 +289,15 @@ and a calm rhythm that feels almost timeless.
 <img src="images/travel/eze1.jpg" class="wide">
 
 <div class="row">
-<img src="images/travel/eze2.jpg" class="tall">
-<img src="images/travel/eze3.jpg" class="tall">
+<img src="images/travel/eze2.jpg" class="square">
+<img src="images/travel/eze3.jpg" class="square">
+</div>
+
 </div>
 
 <div class="text">
-A hilltop village above the sea —
-quiet, delicate, and filled with hidden views.
-</div>
-
+Perched above the sea, Èze feels suspended in time —
+stone paths, open views, and quiet beauty everywhere.
 </div>
 
 </div>
