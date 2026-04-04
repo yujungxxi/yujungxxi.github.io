@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>South Korea</title>
+
+<style>
+
+/* ===== 基本 ===== */
+
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+background:black;
+color:white;
+}
+
+/* ===== NAV ===== */
+
+header{
+position:fixed;
+top:30px;
+left:40px;
+right:40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+z-index:1000;
+
+opacity:0;
+transition:0.5s;
+pointer-events:none;
+}
+
+header.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.logo a{
+font-size:28px;
+font-weight:600;
+text-decoration:none;
+color:white;
+}
+
+nav a{
+margin-left:25px;
+font-size:18px;
+text-decoration:none;
+color:white;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+height:100vh;
+position:relative;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.75);
+}
+
+.hero-text{
+position:absolute;
+bottom:80px;
+left:60px;
+}
+
+.hero-text h1{
+font-size:60px;
+font-family:Georgia, serif;
+margin-bottom:20px;
+}
+
+.hero-text p{
+max-width:400px;
+line-height:1.8;
+opacity:0.85;
+}
+
+/* ===== 共用 ===== */
+
+.city{
+width:90vw;
+max-width:1100px;
+margin:160px auto;
+}
+
+.city h2{
+font-size:40px;
+font-family:Georgia, serif;
+margin-bottom:40px;
+}
+
+.text{
+margin-top:30px;
+max-width:420px;
+line-height:1.8;
+opacity:0.85;
+}
+
+.city img{
+width:100%;
+object-fit:cover;
+}
+
+.tall{ aspect-ratio:3/4; }
+.square{ aspect-ratio:1/1; }
+.wide{ aspect-ratio:4/3; }
+
+/* ===== Seoul（不對稱） ===== */
+
+.seoul{
+display:grid;
+grid-template-columns:1.5fr 1fr;
+gap:30px;
+}
+
+/* ===== Jeonju（堆疊） ===== */
+
+.jeonju{
+display:grid;
+grid-template-columns:1fr;
+gap:25px;
+}
+
+.row{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:25px;
+}
+
+/* ===== Busan（橫向 editorial） ===== */
+
+.busan{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+}
+
+.side{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+/* ===== Gyeongju（中間主圖） ===== */
+
+.gyeongju{
+display:grid;
+grid-template-columns:1fr 2fr 1fr;
+gap:25px;
+align-items:center;
+}
+
+/* ===== Back ===== */
+
+.back{
+width:90vw;
+max-width:1100px;
+margin:120px auto;
+}
+
+.back a{
+text-decoration:none;
+color:white;
+font-size:18px;
+}
+
+/* ===== 手機 ===== */
+
+@media (max-width:900px){
+
+.hero-text{
+left:30px;
+right:30px;
+}
+
+.hero-text h1{
+font-size:38px;
+}
+
+.seoul,
+.busan,
+.gyeongju{
+grid-template-columns:1fr;
+}
+
+.row{
+grid-template-columns:1fr;
+}
+
+.side{
+flex-direction:row;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<header id="navbar" class="show">
+
+<div class="logo">
+<a href="index.html">Una</a>
+</div>
+
+<nav>
+<a href="travel.html">Travel</a>
+<a href="japan.html">Japan</a>
+<a href="taiwan.html">Taiwan</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<img src="images/travel/korea1.jpg">
+
+<div class="hero-text">
+<h1>South Korea</h1>
+<p>
+Where tradition and modern life move side by side — quiet, vibrant, and ever-changing.
+</p>
+</div>
+
+</div>
+
+<!-- Seoul -->
+
+<div class="city">
+
+<h2>Seoul</h2>
+
+<div class="seoul">
+
+<img src="images/travel/seoul1.jpg" class="tall">
+
+<div>
+<img src="images/travel/seoul2.jpg" class="square">
+
+<div class="text">
+Seoul moves fast, yet holds onto its past —
+palaces, streets, and city lights layered together.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Jeonju -->
+
+<div class="city">
+
+<h2>Jeonju</h2>
+
+<div class="jeonju">
+
+<img src="images/travel/jeonju1.jpg" class="wide">
+
+<div class="row">
+<img src="images/travel/jeonju2.jpg" class="square">
+<img src="images/travel/jeonju3.jpg" class="square">
+</div>
+
+</div>
+
+<div class="text">
+Jeonju feels slow and grounded —
+traditional houses, warm tones, and quiet alleys.
+</div>
+
+</div>
+
+<!-- Busan -->
+
+<div class="city">
+
+<h2>Busan</h2>
+
+<div class="busan">
+
+<img src="images/travel/busan1.jpg" class="wide">
+
+<div class="side">
+<img src="images/travel/busan2.jpg" class="tall">
+<img src="images/travel/busan3.jpg" class="square">
+</div>
+
+</div>
+
+<div class="text">
+Busan opens to the sea —
+waves, colors, and a softer rhythm by the coast.
+</div>
+
+</div>
+
+<!-- Gyeongju -->
+
+<div class="city">
+
+<h2>Gyeongju</h2>
+
+<div class="gyeongju">
+
+<div class="side">
+<img src="images/travel/gyeongju2.jpg" class="square">
+</div>
+
+<div>
+<img src="images/travel/gyeongju1.jpg" class="tall">
+</div>
+
+<div class="side">
+<img src="images/travel/gyeongju3.jpg" class="square">
+</div>
+
+</div>
+
+<div class="text">
+Gyeongju holds history in silence —
+ancient sites, open skies, and a sense of stillness.
+</div>
+
+</div>
+
+<!-- Back -->
+
+<div class="back">
+<a href="travel.html">← Back to Travel</a>
+</div>
+
+<!-- NAV 動畫 -->
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY < 80){
+navbar.classList.add("show");
+}else{
+navbar.classList.remove("show");
+}
+
+});
+
+</script>
+
+</body>
+</html>
