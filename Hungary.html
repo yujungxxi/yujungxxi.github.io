@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Hungary</title>
+
+<style>
+
+/* ===== 基本 ===== */
+
+body{
+margin:0;
+font-family:Helvetica, Arial, sans-serif;
+background:black;
+color:white;
+}
+
+/* ===== NAV ===== */
+
+header{
+position:fixed;
+top:30px;
+left:40px;
+right:40px;
+
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+z-index:1000;
+
+opacity:0;
+transition:0.5s;
+pointer-events:none;
+}
+
+header.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.logo a{
+font-size:28px;
+font-weight:600;
+text-decoration:none;
+color:white;
+}
+
+nav a{
+margin-left:25px;
+font-size:18px;
+text-decoration:none;
+color:white;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+height:100vh;
+position:relative;
+}
+
+.hero img{
+width:100%;
+height:100%;
+object-fit:cover;
+filter:brightness(0.75);
+}
+
+.hero-text{
+position:absolute;
+bottom:80px;
+left:60px;
+}
+
+.hero-text h1{
+font-size:60px;
+font-family:Georgia, serif;
+margin-bottom:20px;
+}
+
+.hero-text p{
+max-width:400px;
+line-height:1.8;
+opacity:0.85;
+}
+
+/* ===== 共用 ===== */
+
+.city{
+width:90vw;
+max-width:1100px;
+margin:160px auto;
+}
+
+.city h2{
+font-size:40px;
+font-family:Georgia, serif;
+margin-bottom:40px;
+}
+
+.text{
+margin-top:30px;
+max-width:420px;
+line-height:1.8;
+opacity:0.85;
+}
+
+.city img{
+width:100%;
+object-fit:cover;
+}
+
+.tall{ aspect-ratio:3/4; }
+.square{ aspect-ratio:1/1; }
+.wide{ aspect-ratio:4/3; }
+
+/* ===== Budapest（經典不對稱） ===== */
+
+.budapest{
+display:grid;
+grid-template-columns:1.5fr 1fr;
+gap:30px;
+}
+
+/* ===== Szentendre（中間主圖） ===== */
+
+.szentendre{
+display:grid;
+grid-template-columns:1fr 2fr 1fr;
+gap:25px;
+align-items:center;
+}
+
+.side{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+/* ===== Siófok（橫向＋摩天輪） ===== */
+
+.siofok{
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:25px;
+}
+
+/* ===== Back ===== */
+
+.back{
+width:90vw;
+max-width:1100px;
+margin:120px auto;
+}
+
+.back a{
+text-decoration:none;
+color:white;
+font-size:18px;
+}
+
+/* ===== 手機 ===== */
+
+@media (max-width:900px){
+
+.hero-text{
+left:30px;
+right:30px;
+}
+
+.hero-text h1{
+font-size:38px;
+}
+
+.budapest,
+.szentendre,
+.siofok{
+grid-template-columns:1fr;
+}
+
+.side{
+flex-direction:row;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- NAV -->
+
+<header id="navbar" class="show">
+
+<div class="logo">
+<a href="index.html">Una</a>
+</div>
+
+<nav>
+<a href="travel.html">Travel</a>
+<a href="germany.html">Germany</a>
+<a href="korea.html">South Korea</a>
+</nav>
+
+</header>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<img src="images/travel/hungary1.jpg">
+
+<div class="hero-text">
+<h1>Hungary</h1>
+<p>
+Historic layers, riverside light, and moments that feel quietly timeless.
+</p>
+</div>
+
+</div>
+
+<!-- Budapest -->
+
+<div class="city">
+
+<h2>Budapest</h2>
+
+<div class="budapest">
+
+<img src="images/travel/budapest1.jpg" class="tall">
+
+<div>
+<img src="images/travel/budapest2.jpg" class="square">
+
+<div class="text">
+Budapest feels grand yet intimate —
+bridges, reflections, and a quiet rhythm along the Danube.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Szentendre -->
+
+<div class="city">
+
+<h2>Szentendre</h2>
+
+<div class="szentendre">
+
+<div class="side">
+<img src="images/travel/szentendre2.jpg" class="square">
+</div>
+
+<div>
+<img src="images/travel/szentendre1.jpg" class="tall">
+</div>
+
+<div class="side">
+<img src="images/travel/szentendre3.jpg" class="square">
+</div>
+
+</div>
+
+<div class="text">
+Szentendre feels artistic and warm —
+colorful streets, small shops, and a gentle pace of life.
+</div>
+
+</div>
+
+<!-- Siófok -->
+
+<div class="city">
+
+<h2>Siófok</h2>
+
+<div class="siofok">
+
+<img src="images/travel/siofok1.jpg" class="wide">
+
+<div class="side">
+<img src="images/travel/siofok2.jpg" class="tall">
+<img src="images/travel/siofok3.jpg" class="square">
+</div>
+
+</div>
+
+<div class="text">
+By the lake, Siófok feels light and open —
+and the Óriáskerék rises quietly above it all.
+</div>
+
+</div>
+
+<!-- Back -->
+
+<div class="back">
+<a href="travel.html">← Back to Travel</a>
+</div>
+
+<!-- NAV 動畫 -->
+
+<script>
+
+const navbar = document.getElementById("navbar");
+
+window.addEventListener("scroll", () => {
+
+if(window.scrollY < 80){
+navbar.classList.add("show");
+}else{
+navbar.classList.remove("show");
+}
+
+});
+
+</script>
+
+</body>
+</html>
