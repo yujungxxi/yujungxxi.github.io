@@ -1,297 +1,236 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photo Album</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Helvetica, Arial, sans-serif;
-      background: #f6f3ef;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Album</title>
+<style>
+body {
+  margin:0;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #f6f3ef;
+}
 
-    /* ===== NAV ===== */
-    nav {
-      position: fixed;
-      top: 30px;
-      right: 40px;
-      font-size: 18px;
-      z-index: 9999;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-    nav a {
-      margin-left: 25px;
-      text-decoration: none;
-      color: black;
-    }
-    .logo {
-      position: fixed;
-      top: 30px;
-      left: 40px;
-      font-size: 30px;
-      font-weight: 600;
-      text-decoration: none;
-      color: black;
-      z-index: 9999;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-    nav.hide, .logo.hide {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
+/* ===== NAV ===== */
+nav {
+  position: fixed;
+  top: 30px;
+  right: 40px;
+  font-size: 18px;
+  z-index: 9999;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: black;
+}
+.logo {
+  position: fixed;
+  top: 30px;
+  left: 40px;
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  color: black;
+  z-index: 9999;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+nav.hide, .logo.hide {
+  opacity:0;
+  transform: translateY(-20px);
+}
 
-    /* ===== BOOK ===== */
-    .book {
-      width: 90%;
-      max-width: 800px;
-      margin: 120px auto 40px;
-      perspective: 1500px;
-      position: relative;
-    }
-    .page-container {
-      position: relative;
-      width: 100%;
-      min-height: 520px;
-    }
-    .page {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      background: #fff;
-      border-radius: 20px;
-      padding: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      transform-origin: left;
-      transition: transform 0.8s ease;
-      backface-visibility: hidden;
-    }
-    .page.flipped {
-      transform: rotateY(-180deg);
-    }
+/* ===== BOOK ===== */
+.book {
+  width: 90%;
+  max-width: 800px;
+  margin: 120px auto 40px;
+  perspective: 1500px;
+  position: relative;
+}
+.page-container {
+  position: relative;
+  width: 100%;
+  min-height: 520px;
+}
+.page {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transform-origin: left;
+  transition: transform 0.8s ease;
+  backface-visibility: hidden;
+}
+.page.flipped {
+  transform: rotateY(-180deg);
+}
 
-    /* ===== CONTENT ===== */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-    }
-    .photo-card {
-      background: #fff;
-      padding: 10px;
-      border-radius: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-      transform: rotate(-1deg);
-    }
-    .photo-card:nth-child(2) {
-      transform: rotate(2deg);
-    }
-    .photo-card img {
-      width: 100%;
-      border-radius: 10px;
-    }
-    .caption {
-      font-size: 13px;
-      color: #666;
-      margin-top: 6px;
-      text-align: center;
-    }
+/* ===== CONTENT ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+.photo-card {
+  background: #fff;
+  padding:10px;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.08);
+  transform: rotate(-1deg);
+}
+.photo-card:nth-child(2){transform: rotate(2deg);}
+.photo-card img {
+  width:100%;
+  border-radius:10px;
+}
+.caption {
+  font-size:13px;
+  color:#666;
+  margin-top:6px;
+  text-align:center;
+}
 
-    /* ===== CONTROLS ===== */
-    .controls {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      pointer-events: none; /* 讓按鈕以外地方可以點 */
-    }
-    .controls button {
-      pointer-events: all; /* 讓按鈕可以點 */
-      padding: 10px 20px;
-      border: none;
-      border-radius: 20px;
-      background: black;
-      color: white;
-      cursor: pointer;
-      font-size: 16px;
-      transition: background 0.3s;
-    }
-    .controls button:hover {
-      background: #333;
-    }
+/* ===== CONTROLS ===== */
+.controls {
+  position: fixed;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+  z-index: 10000;
+  pointer-events: none;
+}
+.controls button {
+  pointer-events: all;
+  padding: 10px 20px;
+  border:none;
+  border-radius:20px;
+  background:black;
+  color:white;
+  cursor:pointer;
+  font-size:16px;
+  transition: background 0.3s;
+}
+.controls button:hover {
+  background:#333;
+}
 
-    /* ===== MOBILE ===== */
-    @media (max-width: 768px) {
-      .logo {
-        top: 15px;
-        left: 18px;
-        font-size: 20px;
-      }
-      nav {
-        top: 18px;
-        right: 15px;
-        display: flex;
-        gap: 8px;
-      }
-      nav a {
-        margin-left: 0;
-        font-size: 11px;
-      }
-      .book {
-        margin-top: 90px;
-      }
-      .grid {
-        grid-template-columns: 1fr;
-      }
-      .page-container {
-        min-height: auto;
-      }
-      .page {
-        position: relative;
-        transform: none !important;
-        backface-visibility: visible;
-      }
-      .controls {
-        position: relative;
-        top: auto;
-        transform: none;
-        justify-content: center;
-        margin-top: 20px;
-      }
-    }
-  </style>
+/* ===== MOBILE ===== */
+@media (max-width:768px){
+  .logo{top:15px;left:18px;font-size:20px;}
+  nav{top:18px;right:15px;display:flex;gap:8px;}
+  nav a{margin-left:0;font-size:11px;}
+  .book{margin-top:90px;}
+  .grid{grid-template-columns:1fr;}
+  .page-container{min-height:auto;}
+  .page{position:relative;transform:none !important;backface-visibility:visible;}
+  .controls{position: relative; top:auto; transform:none; justify-content:center; margin-top:20px;}
+}
+</style>
 </head>
 <body>
 
-  <a href="index.html" class="logo">Una</a>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="travel.html">Travel</a>
-    <a href="views.html">Views</a>
-    <a href="friends.html">Friends</a>
-  </nav>
+<a href="index.html" class="logo">Una</a>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="travel.html">Travel</a>
+  <a href="views.html">Views</a>
+  <a href="friends.html">Friends</a>
+</nav>
 
-  <div class="book">
-    <div class="page-container">
-      <!-- PAGE 1 -->
-      <div class="page">
-        <div class="grid">
-          <div class="photo-card">
-            <img src="images/photos/photo1.jpeg" alt="">
-            <p class="caption">今天看到的可愛杯子 ☕</p>
-          </div>
-          <div class="photo-card">
-            <img src="images/photo2.jpeg" alt="">
-            <p class="caption">路邊的小花 🌼</p>
-          </div>
-        </div>
+<div class="book">
+  <div class="page-container">
+    <!-- PAGE 1 -->
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card"><img src="images/photo1.jpeg" alt=""><p class="caption">今天看到的可愛杯子 ☕</p></div>
+        <div class="photo-card"><img src="images/photo2.jpeg" alt=""><p class="caption">路邊的小花 🌼</p></div>
       </div>
-      <!-- PAGE 2 -->
-      <div class="page">
-        <div class="grid">
-          <div class="photo-card">
-            <img src="images/photo3.jpeg" alt="">
-            <p class="caption">咖啡店角落</p>
-          </div>
-          <div class="photo-card">
-            <img src="images/photo4.jpeg" alt="">
-            <p class="caption">可愛小狗 🐶</p>
-          </div>
-        </div>
+    </div>
+    <!-- PAGE 2 -->
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card"><img src="images/photo3.jpeg" alt=""><p class="caption">咖啡店角落</p></div>
+        <div class="photo-card"><img src="images/photo4.jpeg" alt=""><p class="caption">可愛小狗 🐶</p></div>
       </div>
-      <!-- PAGE 3 -->
-      <div class="page">
-        <div class="grid">
-          <div class="photo-card">
-            <img src="images/photo5.jpeg" alt="">
-            <p class="caption">新拍的小物件 ✨</p>
-          </div>
-          <div class="photo-card">
-            <img src="images/photo6.jpeg" alt="">
-            <p class="caption">街角的風景 🌸</p>
-          </div>
-        </div>
+    </div>
+    <!-- PAGE 3 -->
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card"><img src="images/photo5.jpeg" alt=""><p class="caption">新拍的小物件 ✨</p></div>
+        <div class="photo-card"><img src="images/photo6.jpeg" alt=""><p class="caption">街角的風景 🌸</p></div>
       </div>
-      <!-- PAGE 4 -->
-      <div class="page">
-        <div class="grid">
-          <div class="photo-card">
-            <img src="images/photo7.jpeg" alt="">
-            <p class="caption">手作甜點 🍰</p>
-          </div>
-          <div class="photo-card">
-            <p class="caption" style="color:#aaa;">空白頁，等你上傳照片</p>
-          </div>
-        </div>
+    </div>
+    <!-- PAGE 4 -->
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card"><img src="images/photo7.jpeg" alt=""><p class="caption">手作甜點 🍰</p></div>
+        <div class="photo-card"><p class="caption" style="color:#aaa;">空白頁，等你上傳照片</p></div>
       </div>
-      <!-- PAGE 5 -->
-      <div class="page">
-        <div class="grid">
-          <div class="photo-card">
-            <p class="caption" style="color:#aaa;">這裡也可以放照片 🐾</p>
-          </div>
-          <div class="photo-card">
-            <p class="caption" style="color:#aaa;">還有好多故事可以寫 ✨</p>
-          </div>
-        </div>
+    </div>
+    <!-- PAGE 5 -->
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card"><p class="caption" style="color:#aaa;">這裡也可以放照片 🐾</p></div>
+        <div class="photo-card"><p class="caption" style="color:#aaa;">還有好多故事可以寫 ✨</p></div>
       </div>
-
-      <!-- 翻頁按鈕 -->
-      <div class="controls">
-        <button onclick="prevPage()">◀</button>
-        <button onclick="nextPage()">▶</button>
-      </div>
-
     </div>
   </div>
+</div>
 
-  <script>
-    let current = 0;
-    const pages = document.querySelectorAll('.page');
-    const totalPages = pages.length;
+<!-- 翻頁按鈕 -->
+<div class="controls">
+  <button onclick="prevPage()">◀</button>
+  <button onclick="nextPage()">▶</button>
+</div>
 
-    // 初始化 z-index
-    pages.forEach((page, index) => {
-      page.style.zIndex = totalPages - index;
-    });
+<script>
+let current=0;
+const pages=document.querySelectorAll('.page');
+const totalPages=pages.length;
 
-    function nextPage() {
-      if (current < totalPages) {
-        pages[current].classList.add('flipped');
-        pages[current].style.zIndex = current;
-        current++;
-      }
-    }
+// 初始化 z-index
+pages.forEach((page,index)=>page.style.zIndex=totalPages-index);
 
-    function prevPage() {
-      if (current > 0) {
-        current--;
-        pages[current].classList.remove('flipped');
-        pages[current].style.zIndex = totalPages - current;
-      }
-    }
+function nextPage(){
+  if(current<totalPages){
+    pages[current].classList.add('flipped');
+    pages[current].style.zIndex=current;
+    current++;
+  }
+}
+function prevPage(){
+  if(current>0){
+    current--;
+    pages[current].classList.remove('flipped');
+    pages[current].style.zIndex=totalPages-current;
+  }
+}
 
-    // nav fade on scroll
-    const nav = document.querySelector("nav");
-    const logo = document.querySelector(".logo");
-    let lastScroll = 0;
-
-    window.addEventListener("scroll", () => {
-      let currentScroll = window.scrollY;
-      if (currentScroll > lastScroll && currentScroll > 50) {
-        nav.classList.add("hide");
-        logo.classList.add("hide");
-      } else {
-        nav.classList.remove("hide");
-        logo.classList.remove("hide");
-      }
-      lastScroll = currentScroll;
-    });
-  </script>
+// nav fade
+const nav=document.querySelector("nav");
+const logo=document.querySelector(".logo");
+let lastScroll=0;
+window.addEventListener("scroll",()=>{
+  let currentScroll=window.scrollY;
+  if(currentScroll>lastScroll && currentScroll>50){
+    nav.classList.add("hide");
+    logo.classList.add("hide");
+  }else{
+    nav.classList.remove("hide");
+    logo.classList.remove("hide");
+  }
+  lastScroll=currentScroll;
+});
+</script>
 
 </body>
 </html>
