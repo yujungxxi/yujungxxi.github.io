@@ -1,211 +1,190 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cute Album</title>
+<title>Una Photo Journal</title>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
 body {
   margin: 0;
-  font-family: "Helvetica Neue", sans-serif;
-  background: #f6f3ef;
+  font-family: Helvetica, Arial, sans-serif;
+  background: #f7f7f7;
 }
 
-/* NAVBAR */
-.navbar {
+/* ===== NAV & LOGO ===== */
+nav {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 15px;
-  text-align: center;
-  background: rgba(255,255,255,0.95);
-  backdrop-filter: blur(10px);
-  z-index: 9999;
-  transition: transform 0.4s ease, opacity 0.4s ease;
-}
-
-.navbar.hidden {
-  transform: translateY(-100%);
-  opacity: 0;
-}
-
-h1 {
-  margin: 0;
+  top: 30px;
+  right: 40px;
   font-size: 18px;
+  z-index: 1000;
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-/* BOOK */
-.book {
-  width: 90%;
-  max-width: 800px;
-  margin: 100px auto 40px;
-  perspective: 1500px;
+nav a {
+  margin-left: 25px;
+  text-decoration: none;
+  color: black;
 }
 
-.page-container {
+nav a.active {
+  font-weight: bold;
+  border-bottom: 1px solid black;
+}
+
+.logo {
+  position: fixed;
+  top: 30px;
+  left: 40px;
+  font-size: 30px;
+  font-weight: 600;
+  z-index: 1000;
+  text-decoration: none;
+  color: black;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+nav.hide, .logo.hide {
+  opacity: 0;
+  transform: translateY(-20px);
+  pointer-events: none;
+}
+
+/* ===== DESKTOP 拼貼 ===== */
+.gallery {
   position: relative;
-  min-height: 500px;
-  z-index: 1;
+  width: 100%;
+  margin: auto;
+  padding-top: 120px;
 }
 
-.page {
-  width: 100%;
-  background: white;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+.gallery img {
   position: absolute;
-  backface-visibility: hidden;
-  transform-origin: left;
-  transition: transform 0.8s ease;
+  width: 16%;
+  max-width: 100%;
+  height: auto;
+  transition: 0.3s;
 }
 
-.page.flipped {
-  transform: rotateY(-180deg);
+.gallery img:hover {
+  transform: scale(1.05);
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-}
+/* 電腦版位置 */
+.img1 { top: 18%; left: 12%; }
+.img2 { top: 25%; left: 30%; }
+.img3 { top: 43%; left: 9%; }
+.img4 { top: 65%; left: 28%; }
+.img5 { top: 38%; left: 55%; }
+.img6 { top: 55%; left: 73%; }
+.img7 { top: 18%; left: 60%; }
 
-.photo-card {
-  background: #fff;
-  padding: 10px;
-  border-radius: 15px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  transform: rotate(-1deg);
-}
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
 
-.photo-card:nth-child(2) {
-  transform: rotate(2deg);
-}
-
-.photo-card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
-.caption {
-  font-size: 13px;
-  color: #666;
-  margin-top: 6px;
-}
-
-.controls {
-  text-align: center;
-  margin-top: 20px;
-}
-
-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 20px;
-  background: #333;
-  color: white;
-  cursor: pointer;
-  margin: 5px;
-}
-
-button:hover {
-  background: #555;
-}
-
-/* MOBILE */
-@media (max-width: 600px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .logo {
+    top: 15px;
+    left: 18px;
+    font-size: 20px;
   }
 
-  .book {
-    margin-top: 80px;
+  nav {
+    top: 18px;
+    right: 15px;
+    display: flex;
+    gap: 8px;
+  }
+
+  nav a {
+    margin-left: 0;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+  }
+
+  .gallery {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 12px;
+    row-gap: 8px;
+    padding: 80px 12px 60px;
+  }
+
+  .gallery img {
+    position: relative;
+    width: 100%;
+    top: auto !important;
+    left: auto !important;
+    object-fit: contain;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  /* 拼貼微調 */
+  .img1 {transform: translateY(10px);}
+  .img2 {transform: translateY(25px);}
+  .img3 {transform: translateY(-90px);}
+  .img4 {transform: translateY(35px);}
+  .img5 {transform: translateY(-65px);}
+  .img6 {transform: translateY(15px);}
+  .img7 {transform: translateY(-45px);}
+}
+
+/* 大螢幕比例 */
+@media (min-width: 901px) {
+  .gallery {
+    aspect-ratio: 16/9;
   }
 }
+  
 </style>
 </head>
 
 <body>
 
-<div class="navbar" id="navbar">
-  <h1>My Little Album 📖</h1>
-</div>
+<!-- ✅ Logo 可點 -->
+<a href="index.html" class="logo">Una</a>
 
-<div class="book">
-  <div class="page-container">
+<!-- ✅ Nav 加 Home -->
+<nav>
+  <a href="index.html" class="active">Home</a>
+  <a href="about.html">About</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="travel.html">Travel</a>
+  <a href="photos.html">Photos</a>
+  <a href="views.html">Views</a>
+  <a href="friends.html">Friends</a>
+</nav>
 
-    <div class="page" id="page1">
-      <div class="grid">
-        <div class="photo-card">
-          <img src="https://via.placeholder.com/300">
-          <p class="caption">可愛杯子 ☕</p>
-        </div>
-        <div class="photo-card">
-          <img src="https://via.placeholder.com/300">
-          <p class="caption">小花 🌼</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="page" id="page2">
-      <div class="grid">
-        <div class="photo-card">
-          <img src="https://via.placeholder.com/300">
-          <p class="caption">咖啡店角落</p>
-        </div>
-        <div class="photo-card">
-          <img src="https://via.placeholder.com/300">
-          <p class="caption">小狗 🐶</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="controls">
-  <button onclick="prevPage()">◀</button>
-  <button onclick="nextPage()">▶</button>
+<div class="gallery">
+  <img src="images/index/index1.JPG" class="img1">
+  <img src="images/index/index2.JPG" class="img2">
+  <img src="images/index/index3.JPG" class="img3">
+  <img src="images/index/index4.png" class="img4">
+  <img src="images/index/index5.JPG" class="img5">
+  <img src="images/index/index6.JPG" class="img6">
+  <img src="images/index/index7.JPG" class="img7">
 </div>
 
 <script>
-let current = 0;
-const pages = document.querySelectorAll('.page');
-
-function nextPage() {
-  if (current < pages.length) {
-    pages[current].classList.add('flipped');
-    current++;
-  }
-}
-
-function prevPage() {
-  if (current > 0) {
-    current--;
-    pages[current].classList.remove('flipped');
-  }
-}
-
-// NAVBAR SCROLL EFFECT
-let lastScroll = 0;
-const navbar = document.getElementById("navbar");
-
-window.addEventListener("load", () => {
-  navbar.classList.remove("hidden");
-});
+const nav = document.querySelector("nav");
+const logo = document.querySelector(".logo");
 
 window.addEventListener("scroll", () => {
-  let currentScroll = window.pageYOffset;
-
-  if (currentScroll > lastScroll && currentScroll > 50) {
-    navbar.classList.add("hidden");
+  if (window.scrollY < 50) {
+    nav.classList.remove("hide");
+    logo.classList.remove("hide");
   } else {
-    navbar.classList.remove("hidden");
+    nav.classList.add("hide");
+    logo.classList.add("hide");
   }
-
-  lastScroll = currentScroll;
 });
 </script>
 
