@@ -1,32 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-Hant">
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Una Photo Journal</title>
+<title>Photo Album</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
-
-html, body {
-  overflow-x: hidden;
-}
-
 body {
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
-  background: #f7f7f7;
+  background: #f6f3ef;
 }
 
-/* ===== NAV & LOGO ===== */
+/* ===== NAV (跟你首頁同風格) ===== */
 nav {
   position: fixed;
   top: 30px;
   right: 40px;
   font-size: 18px;
-  z-index: 1000;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 9999;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 nav a {
@@ -35,61 +28,99 @@ nav a {
   color: black;
 }
 
-nav a.active {
-  font-weight: bold;
-  border-bottom: 1px solid black;
-}
-
 .logo {
   position: fixed;
   top: 30px;
   left: 40px;
   font-size: 30px;
   font-weight: 600;
-  z-index: 1000;
   text-decoration: none;
   color: black;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  z-index: 9999;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
 
 nav.hide, .logo.hide {
   opacity: 0;
   transform: translateY(-20px);
-  pointer-events: none;
 }
 
-/* ===== DESKTOP 拼貼 ===== */
-.gallery {
+/* ===== BOOK ===== */
+.book {
+  width: 90%;
+  max-width: 800px;
+  margin: 120px auto 40px;
+  perspective: 2000px;
+}
+
+.page-container {
   position: relative;
-  width: 100%;
-  margin: auto;
-  padding-top: 120px;
+  height: 520px;
 }
 
-.gallery img {
+.page {
   position: absolute;
-  width: 16%;
-  max-width: 100%;
-  height: auto;
-  transition: 0.3s;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transform-origin: left;
+  transition: transform 0.8s ease;
+  backface-visibility: hidden;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
+.page.flipped {
+  transform: rotateY(-180deg);
 }
 
-/* 電腦版位置 */
-.img1 { top: 18%; left: 12%; }
-.img2 { top: 25%; left: 30%; }
-.img3 { top: 43%; left: 9%; }
-.img4 { top: 65%; left: 28%; }
-.img5 { top: 38%; left: 55%; }
-.img6 { top: 55%; left: 73%; }
-.img7 { top: 18%; left: 60%; }
+/* ===== CONTENT ===== */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.photo-card {
+  background: #fff;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  transform: rotate(-1deg);
+}
+
+.photo-card:nth-child(2) {
+  transform: rotate(2deg);
+}
+
+.photo-card img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.caption {
+  font-size: 13px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.controls {
+  text-align: center;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: black;
+  color: white;
+  cursor: pointer;
+}
 
 /* ===== MOBILE ===== */
 @media (max-width: 768px) {
-
   .logo {
     top: 15px;
     left: 18px;
@@ -104,89 +135,3 @@ nav.hide, .logo.hide {
   }
 
   nav a {
-    margin-left: 0;
-    font-size: 11px;
-    letter-spacing: 0.5px;
-  }
-
-  .gallery {
-    position: relative;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 12px;
-    row-gap: 8px;
-    padding: 80px 12px 60px;
-  }
-
-  .gallery img {
-    position: relative;
-    width: 100%;
-    top: auto !important;
-    left: auto !important;
-    object-fit: contain;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  }
-
-  /* 拼貼微調 */
-  .img1 {transform: translateY(10px);}
-  .img2 {transform: translateY(25px);}
-  .img3 {transform: translateY(-90px);}
-  .img4 {transform: translateY(35px);}
-  .img5 {transform: translateY(-65px);}
-  .img6 {transform: translateY(15px);}
-  .img7 {transform: translateY(-45px);}
-}
-
-/* 大螢幕比例 */
-@media (min-width: 901px) {
-  .gallery {
-    aspect-ratio: 16/9;
-  }
-}
-  
-</style>
-</head>
-
-<body>
-
-<!-- ✅ Logo 可點 -->
-<a href="index.html" class="logo">Una</a>
-
-<!-- ✅ Nav 加 Home -->
-<nav>
-  <a href="index.html" class="active">Home</a>
-  <a href="about.html">About</a>
-  <a href="gallery.html">Gallery</a>
-  <a href="travel.html">Travel</a>
-  <a href="photos.html">Photos</a>
-  <a href="views.html">Views</a>
-  <a href="friends.html">Friends</a>
-</nav>
-
-<div class="gallery">
-  <img src="images/index/index1.JPG" class="img1">
-  <img src="images/index/index2.JPG" class="img2">
-  <img src="images/index/index3.JPG" class="img3">
-  <img src="images/index/index4.png" class="img4">
-  <img src="images/index/index5.JPG" class="img5">
-  <img src="images/index/index6.JPG" class="img6">
-  <img src="images/index/index7.JPG" class="img7">
-</div>
-
-<script>
-const nav = document.querySelector("nav");
-const logo = document.querySelector(".logo");
-
-window.addEventListener("scroll", () => {
-  if (window.scrollY < 50) {
-    nav.classList.remove("hide");
-    logo.classList.remove("hide");
-  } else {
-    nav.classList.add("hide");
-    logo.classList.add("hide");
-  }
-});
-</script>
-
-</body>
-</html>
