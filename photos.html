@@ -12,7 +12,7 @@ body {
   background: #f6f3ef;
 }
 
-/* ===== NAV (跟你首頁同風格) ===== */
+/* ===== NAV ===== */
 nav {
   position: fixed;
   top: 30px;
@@ -55,7 +55,7 @@ nav.hide, .logo.hide {
 
 .page-container {
   position: relative;
-  height: 520px;
+  min-height: 520px;
 }
 
 .page {
@@ -103,6 +103,7 @@ nav.hide, .logo.hide {
   font-size: 13px;
   color: #666;
   margin-top: 6px;
+  text-align: center;
 }
 
 .controls {
@@ -148,7 +149,7 @@ button {
   }
 
   .page-container {
-    height: auto;
+    min-height: auto;
   }
 
   .page {
@@ -164,82 +165,82 @@ button {
 <a href="index.html" class="logo">Una</a>
 
 <nav>
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="gallery.html">Gallery</a>
-<a href="travel.html">Travel</a>
-<a href="views.html">Views</a>
-<a href="friends.html">Friends</a>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="photos.html">Photos</a>
 </nav>
 
 <div class="book">
-<div class="page-container">
+  <div class="page-container">
 
-<!-- 第 1 頁 -->
-<div class="page">
-<div class="grid">
-<div class="photo-card">
-<img src="https://via.placeholder.com/300">
-<p class="caption">今天看到的可愛杯子 ☕</p>
-</div>
-<div class="photo-card">
-<img src="https://via.placeholder.com/300">
-<p class="caption">路邊的小花 🌼</p>
-</div>
-</div>
-</div>
+    <!-- 第 1 頁 -->
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card">
+          <img src="images/photo1.jpeg" alt="photo1">
+          <p class="caption">今天看到的可愛杯子 ☕</p>
+        </div>
+        <div class="photo-card">
+          <img src="images/photo2.jpeg" alt="photo2">
+          <p class="caption">路邊的小花 🌼</p>
+        </div>
+      </div>
+    </div>
 
-<!-- 第 2 頁 -->
-<div class="page">
-<div class="grid">
-<div class="photo-card">
-<img src="https://via.placeholder.com/300">
-<p class="caption">咖啡店角落</p>
-</div>
-<div class="photo-card">
-<img src="https://via.placeholder.com/300">
-<p class="caption">可愛小狗 🐶</p>
-</div>
-</div>
-</div>
+    <!-- 第 2 頁 -->
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card">
+          <img src="images/photo3.jpeg" alt="photo3">
+          <p class="caption">咖啡店角落</p>
+        </div>
+        <div class="photo-card">
+          <img src="images/photo4.jpeg" alt="photo4">
+          <p class="caption">可愛小狗 🐶</p>
+        </div>
+      </div>
+    </div>
 
-<!-- 第 3 頁 (空頁) -->
-<div class="page">
-<div class="grid">
-<div class="photo-card">
-<p class="caption" style="text-align:center; color:#aaa;">還沒放照片 😄</p>
-</div>
-<div class="photo-card">
-<p class="caption" style="text-align:center; color:#aaa;">可以新增內容 ✨</p>
-</div>
-</div>
-</div>
+    <!-- 第 3 頁 -->
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card">
+          <img src="images/photo5.jpeg" alt="photo5">
+          <p class="caption">新拍的小物件 ✨</p>
+        </div>
+        <div class="photo-card">
+          <img src="images/photo6.jpeg" alt="photo6">
+          <p class="caption">街角的風景 🌸</p>
+        </div>
+      </div>
+    </div>
 
-<!-- 第 4 頁 (空頁) -->
-<div class="page">
-<div class="grid">
-<div class="photo-card">
-<p class="caption" style="text-align:center; color:#aaa;">空白頁 🌸</p>
-</div>
-<div class="photo-card">
-<p class="caption" style="text-align:center; color:#aaa;">等待你的照片 📷</p>
-</div>
-</div>
-</div>
+    <!-- 第 4 頁 -->
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card">
+          <img src="images/photo7.jpeg" alt="photo7">
+          <p class="caption">手作甜點 🍰</p>
+        </div>
+        <div class="photo-card">
+          <p class="caption" style="color:#aaa;">空白頁，等你上傳照片</p>
+        </div>
+      </div>
+    </div>
 
-<!-- 第 5 頁 (空頁) -->
-<div class="page">
-<div class="grid">
-<div class="photo-card">
-<p class="caption" style="text-align:center; color:#aaa;">這裡也可以放照片 🐾</p>
-</div>
-<div class="photo-card">
-<p class="caption" style="text-align:center; color:#aaa;">還有好多故事可以寫 ✨</p>
-</div>
-</div>
-</div>
+    <!-- 第 5 頁 -->
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card">
+          <p class="caption" style="color:#aaa;">這裡也可以放照片 🐾</p>
+        </div>
+        <div class="photo-card">
+          <p class="caption" style="color:#aaa;">還有好多故事可以寫 ✨</p>
+        </div>
+      </div>
+    </div>
 
-</div>
+  </div>
 </div>
 
 <div class="controls">
