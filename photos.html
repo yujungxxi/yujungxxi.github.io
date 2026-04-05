@@ -99,27 +99,40 @@ nav.hide, .logo.hide {
 .controls {
   position: fixed;
   top: 50%;
-  width: 100%;
+  left: 50%;
+  width: 80%; /* 控制按鈕區域寬度 */
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: space-between;
-  transform: translateY(-50%);
   z-index: 10000;
-  pointer-events: none;
-  padding: 0 10%; /* <- 往裡縮，左右各 10% 的 margin */
 }
+
 .controls button {
-  pointer-events: all;
   padding: 10px 20px;
-  border:none;
-  border-radius:20px;
-  background:black;
-  color:white;
-  cursor:pointer;
-  font-size:16px;
+  border: none;
+  border-radius: 20px;
+  background: black;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
   transition: background 0.3s;
 }
 .controls button:hover {
-  background:#333;
+  background: #333;
+}
+
+/* 手機響應式 */
+@media (max-width: 768px) {
+  .controls {
+    position: relative;
+    top: auto;
+    left: auto;
+    transform: none;
+    width: 100%;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+  }
 }
 
 /* ===== MOBILE ===== */
