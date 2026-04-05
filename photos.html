@@ -135,3 +135,114 @@ button {
   }
 
   nav a {
+    margin-left: 0;
+    font-size: 11px;
+  }
+
+  .book {
+    margin-top: 90px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-container {
+    height: auto;
+  }
+
+  .page {
+    position: relative;
+    transform: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<a href="index.html" class="logo">Una</a>
+
+<nav>
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="photos.html">Photos</a>
+</nav>
+
+<div class="book">
+  <div class="page-container">
+
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card">
+          <img src="https://via.placeholder.com/300">
+          <p class="caption">今天看到的可愛杯子 ☕</p>
+        </div>
+        <div class="photo-card">
+          <img src="https://via.placeholder.com/300">
+          <p class="caption">路邊的小花 🌼</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="grid">
+        <div class="photo-card">
+          <img src="https://via.placeholder.com/300">
+          <p class="caption">咖啡店角落</p>
+        </div>
+        <div class="photo-card">
+          <img src="https://via.placeholder.com/300">
+          <p class="caption">可愛小狗 🐶</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button onclick="prevPage()">◀</button>
+  <button onclick="nextPage()">▶</button>
+</div>
+
+<script>
+let current = 0;
+const pages = document.querySelectorAll('.page');
+
+function nextPage() {
+  if (current < pages.length) {
+    pages[current].classList.add('flipped');
+    current++;
+  }
+}
+
+function prevPage() {
+  if (current > 0) {
+    current--;
+    pages[current].classList.remove('flipped');
+  }
+}
+
+// NAV SCROLL
+const nav = document.querySelector("nav");
+const logo = document.querySelector(".logo");
+let lastScroll = 0;
+
+window.addEventListener("scroll", () => {
+  let currentScroll = window.scrollY;
+
+  if (currentScroll > lastScroll && currentScroll > 50) {
+    nav.classList.add("hide");
+    logo.classList.add("hide");
+  } else {
+    nav.classList.remove("hide");
+    logo.classList.remove("hide");
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+
+</body>
+</html>
