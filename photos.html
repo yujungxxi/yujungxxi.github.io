@@ -63,14 +63,11 @@
       padding: 20px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       transform-origin: left;
-      transition: transform 0.8s ease, z-index 0s linear 0.8s;
+      transition: transform 0.8s ease;
       backface-visibility: hidden;
-      z-index: 1;
     }
     .page.flipped {
       transform: rotateY(-180deg);
-      z-index: 0;
-      transition: transform 0.8s ease;
     }
 
     /* ===== CONTENT ===== */
@@ -102,16 +99,27 @@
 
     /* ===== CONTROLS ===== */
     .controls {
-      text-align: center;
-      margin-top: 20px;
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      pointer-events: none; /* 讓按鈕以外地方可以點 */
     }
-    button {
+    .controls button {
+      pointer-events: all; /* 讓按鈕可以點 */
       padding: 10px 20px;
       border: none;
       border-radius: 20px;
       background: black;
       color: white;
       cursor: pointer;
+      font-size: 16px;
+      transition: background 0.3s;
+    }
+    .controls button:hover {
+      background: #333;
     }
 
     /* ===== MOBILE ===== */
@@ -145,6 +153,13 @@
         transform: none !important;
         backface-visibility: visible;
       }
+      .controls {
+        position: relative;
+        top: auto;
+        transform: none;
+        justify-content: center;
+        margin-top: 20px;
+      }
     }
   </style>
 </head>
@@ -154,10 +169,7 @@
   <nav>
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="travel.html">Travel</a>
-    <a href="views.html">Views</a>
-    <a href="friends.html">Friends</a>
+    <a href="photos.html">Photos</a>
   </nav>
 
   <div class="book">
@@ -213,22 +225,41 @@
           </div>
         </div>
       </div>
+      <!-- PAGE 5 -->
+      <div class="page">
+        <div class="grid">
+          <div class="photo-card">
+            <p class="caption" style="color:#aaa;">這裡也可以放照片 🐾</p>
+          </div>
+          <div class="photo-card">
+            <p class="caption" style="color:#aaa;">還有好多故事可以寫 ✨</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 翻頁按鈕 -->
+      <div class="controls">
+        <button onclick="prevPage()">◀</button>
+        <button onclick="nextPage()">▶</button>
+      </div>
 
     </div>
-  </div>
-
-  <div class="controls">
-    <button onclick="prevPage()">◀</button>
-    <button onclick="nextPage()">▶</button>
   </div>
 
   <script>
     let current = 0;
     const pages = document.querySelectorAll('.page');
+    const totalPages = pages.length;
+
+    // 初始化 z-index
+    pages.forEach((page, index) => {
+      page.style.zIndex = totalPages - index;
+    });
 
     function nextPage() {
-      if (current < pages.length) {
+      if (current < totalPages) {
         pages[current].classList.add('flipped');
+        pages[current].style.zIndex = current;
         current++;
       }
     }
@@ -237,10 +268,11 @@
       if (current > 0) {
         current--;
         pages[current].classList.remove('flipped');
+        pages[current].style.zIndex = totalPages - current;
       }
     }
 
-    // nav fade
+    // nav fade on scroll
     const nav = document.querySelector("nav");
     const logo = document.querySelector(".logo");
     let lastScroll = 0;
